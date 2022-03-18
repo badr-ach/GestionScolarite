@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>DB</AssemblyName>
+    <RootNamespace>DB</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.28" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="System.Data.SqlClient" Version="4.5.1" />
+  </ItemGroup>
+</Project>
