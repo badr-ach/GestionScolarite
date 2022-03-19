@@ -54,3 +54,10 @@ create table moyennes(
     FOREIGN KEY (code_eleve) REFERENCES eleves(code),
     FOREIGN KEY (code_fil) REFERENCES filieres(code) 
 );
+
+insert into filieres (code,designation) values ("AP","Année préparatoire");
+insert into filieres (code,designation) values ("GINF","Génie informatique");
+insert into filieres (code,designation) values ("GIND","Génie industriel");
+insert into filieres (code,designation) values ("GSTR","Génie systèmes réseaux et télécomes");
+insert into filieres (code,designation) values ("GSEA","Génie éléctronique et automatique");
+insert into filieres (code,designation) values ("G3EI","Génie Environement");
