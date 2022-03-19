@@ -29,50 +29,39 @@ namespace GestionScolarite
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.CodeTxt = new System.Windows.Forms.TextBox();
+            this.Code = new System.Windows.Forms.TextBox();
             this.CodeCB = new System.Windows.Forms.CheckBox();
             this.NouveauBtn = new System.Windows.Forms.Button();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.AjouterBtn = new System.Windows.Forms.Button();
             this.NomCB = new System.Windows.Forms.CheckBox();
-            this.NomTxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Nom = new System.Windows.Forms.TextBox();
             this.SupprimerBtn = new System.Windows.Forms.Button();
             this.FiliereCB = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ModifierBtn = new System.Windows.Forms.Button();
             this.PrenomCB = new System.Windows.Forms.CheckBox();
-            this.PrenomTxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Prenom = new System.Windows.Forms.TextBox();
             this.RechercherBtn = new System.Windows.Forms.Button();
             this.NiveauCB = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.FiliereCBB = new System.Windows.Forms.ComboBox();
-            this.NiveauCBB = new System.Windows.Forms.ComboBox();
+            this.Code_fil = new System.Windows.Forms.ComboBox();
+            this.Niveau = new System.Windows.Forms.ComboBox();
             this.GestionDesNotesBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // Code
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(45, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Code";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // CodeTxt
-            // 
-            this.CodeTxt.Location = new System.Drawing.Point(115, 31);
-            this.CodeTxt.Name = "CodeTxt";
-            this.CodeTxt.Size = new System.Drawing.Size(158, 23);
-            this.CodeTxt.TabIndex = 1;
+            this.Code.Location = new System.Drawing.Point(115, 31);
+            this.Code.Name = "Code";
+            this.Code.Size = new System.Drawing.Size(158, 23);
+            this.Code.TabIndex = 1;
             // 
             // CodeCB
             // 
@@ -120,23 +109,12 @@ namespace GestionScolarite
             this.NomCB.TabIndex = 6;
             this.NomCB.UseVisualStyleBackColor = true;
             // 
-            // NomTxt
+            // Nom
             // 
-            this.NomTxt.Location = new System.Drawing.Point(115, 69);
-            this.NomTxt.Name = "NomTxt";
-            this.NomTxt.Size = new System.Drawing.Size(158, 23);
-            this.NomTxt.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(45, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 19);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Nom";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.Nom.Location = new System.Drawing.Point(115, 69);
+            this.Nom.Name = "Nom";
+            this.Nom.Size = new System.Drawing.Size(158, 23);
+            this.Nom.TabIndex = 5;
             // 
             // SupprimerBtn
             // 
@@ -147,6 +125,7 @@ namespace GestionScolarite
             this.SupprimerBtn.TabIndex = 15;
             this.SupprimerBtn.Text = "Supprimer";
             this.SupprimerBtn.UseVisualStyleBackColor = false;
+            this.SupprimerBtn.Click += new System.EventHandler(this.SupprimerBtn_Click);
             // 
             // FiliereCB
             // 
@@ -176,6 +155,7 @@ namespace GestionScolarite
             this.ModifierBtn.TabIndex = 11;
             this.ModifierBtn.Text = "Modifier";
             this.ModifierBtn.UseVisualStyleBackColor = false;
+            this.ModifierBtn.Click += new System.EventHandler(this.ModifierBtn_Click);
             // 
             // PrenomCB
             // 
@@ -187,23 +167,12 @@ namespace GestionScolarite
             this.PrenomCB.UseVisualStyleBackColor = true;
             this.PrenomCB.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // PrenomTxt
+            // Prenom
             // 
-            this.PrenomTxt.Location = new System.Drawing.Point(115, 107);
-            this.PrenomTxt.Name = "PrenomTxt";
-            this.PrenomTxt.Size = new System.Drawing.Size(158, 23);
-            this.PrenomTxt.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(45, 108);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 19);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Prénom";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.Prenom.Location = new System.Drawing.Point(115, 107);
+            this.Prenom.Name = "Prenom";
+            this.Prenom.Size = new System.Drawing.Size(158, 23);
+            this.Prenom.TabIndex = 9;
             // 
             // RechercherBtn
             // 
@@ -214,6 +183,7 @@ namespace GestionScolarite
             this.RechercherBtn.TabIndex = 19;
             this.RechercherBtn.Text = "Rechercher";
             this.RechercherBtn.UseVisualStyleBackColor = false;
+            this.RechercherBtn.Click += new System.EventHandler(this.RechercherBtn_Click);
             // 
             // NiveauCB
             // 
@@ -235,32 +205,22 @@ namespace GestionScolarite
             this.label5.TabIndex = 16;
             this.label5.Text = "Niveau";
             // 
-            // FiliereCBB
+            // Code_fil
             // 
-            this.FiliereCBB.FormattingEnabled = true;
-            this.FiliereCBB.Items.AddRange(new object[] {
-            "AP",
-            "GINF",
-            "GSTR",
-            "GSEA",
-            "GIND",
-            "G3EI"});
-            this.FiliereCBB.Location = new System.Drawing.Point(115, 145);
-            this.FiliereCBB.Name = "FiliereCBB";
-            this.FiliereCBB.Size = new System.Drawing.Size(158, 23);
-            this.FiliereCBB.TabIndex = 20;
+            this.Code_fil.FormattingEnabled = true;
+            this.Code_fil.Location = new System.Drawing.Point(115, 145);
+            this.Code_fil.Name = "Code_fil";
+            this.Code_fil.Size = new System.Drawing.Size(158, 23);
+            this.Code_fil.TabIndex = 20;
+            this.Code_fil.SelectedIndexChanged += new System.EventHandler(this.FiliereCBB_SelectedIndexChanged);
             // 
-            // NiveauCBB
+            // Niveau
             // 
-            this.NiveauCBB.FormattingEnabled = true;
-            this.NiveauCBB.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.NiveauCBB.Location = new System.Drawing.Point(115, 187);
-            this.NiveauCBB.Name = "NiveauCBB";
-            this.NiveauCBB.Size = new System.Drawing.Size(158, 23);
-            this.NiveauCBB.TabIndex = 21;
+            this.Niveau.FormattingEnabled = true;
+            this.Niveau.Location = new System.Drawing.Point(115, 187);
+            this.Niveau.Name = "Niveau";
+            this.Niveau.Size = new System.Drawing.Size(158, 23);
+            this.Niveau.TabIndex = 21;
             // 
             // GestionDesNotesBtn
             // 
@@ -281,17 +241,50 @@ namespace GestionScolarite
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(546, 150);
             this.dataGridView1.TabIndex = 23;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(45, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 19);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Code";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(46, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 19);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Nom";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(44, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 19);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Prénom";
             // 
             // Gestion_Etudiants
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.GestionDesNotesBtn);
-            this.Controls.Add(this.NiveauCBB);
-            this.Controls.Add(this.FiliereCBB);
+            this.Controls.Add(this.Niveau);
+            this.Controls.Add(this.Code_fil);
             this.Controls.Add(this.RechercherBtn);
             this.Controls.Add(this.NiveauCB);
             this.Controls.Add(this.label5);
@@ -300,16 +293,13 @@ namespace GestionScolarite
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ModifierBtn);
             this.Controls.Add(this.PrenomCB);
-            this.Controls.Add(this.PrenomTxt);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Prenom);
             this.Controls.Add(this.AjouterBtn);
             this.Controls.Add(this.NomCB);
-            this.Controls.Add(this.NomTxt);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Nom);
             this.Controls.Add(this.NouveauBtn);
             this.Controls.Add(this.CodeCB);
-            this.Controls.Add(this.CodeTxt);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Code);
             this.Name = "Gestion_Etudiants";
             this.Text = "Gestion_Etudiants";
             this.Load += new System.EventHandler(this.Gestion_Etudiants_Load);
@@ -321,29 +311,28 @@ namespace GestionScolarite
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox CodeTxt;
+        private System.Windows.Forms.TextBox Code;
         private System.Windows.Forms.CheckBox CodeCB;
         private System.Windows.Forms.Button NouveauBtn;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Button AjouterBtn;
         private System.Windows.Forms.CheckBox NomCB;
-        private System.Windows.Forms.TextBox NomTxt;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox Nom;
         private System.Windows.Forms.Button SupprimerBtn;
         private System.Windows.Forms.CheckBox FiliereCB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ModifierBtn;
         private System.Windows.Forms.CheckBox PrenomCB;
-        private System.Windows.Forms.TextBox PrenomTxt;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Prenom;
         private System.Windows.Forms.Button GestionDesNotesBtn;
-        private System.Windows.Forms.ComboBox NiveauCBB;
-        private System.Windows.Forms.ComboBox FiliereCBB;
+        private System.Windows.Forms.ComboBox Niveau;
+        private System.Windows.Forms.ComboBox Code_fil;
         private System.Windows.Forms.Button RechercherBtn;
         private System.Windows.Forms.CheckBox NiveauCB;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }

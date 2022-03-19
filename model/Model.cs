@@ -71,6 +71,7 @@ namespace DB
                     fields[i].SetValue(instance, dr.GetValue(dr.GetOrdinal(fields[i].Name)));
                 }
             }
+            dr.Close();
             return instance;
         }
 
@@ -87,6 +88,7 @@ namespace DB
                     fields[i].SetValue(instance, dr.GetValue(dr.GetOrdinal(fields[i].Name)));
                 }
             }
+            dr.Close();
             return instance;
         }
 
@@ -104,6 +106,7 @@ namespace DB
                 }
                 res.Add(instance);
             }
+            dr.Close();
             return res;
         }
 
@@ -111,6 +114,7 @@ namespace DB
         {
             string sql = "Select * from " + typeof(T).Name + "s";
             List<dynamic> res = new();
+            Console.WriteLine(sql);
             IDataReader dr = Connection.Select(sql);
             while (dr.Read())
             {
@@ -122,6 +126,7 @@ namespace DB
                 }
                 res.Add(instance);
             }
+            dr.Close();
             return res;
         }
 
@@ -131,7 +136,7 @@ namespace DB
             string sql = "Select * from " + this.GetType().Name + "s where ";
             foreach(KeyValuePair<string,object> kp in dico)
             {
-                sql += kp.Key + "=" + kp.Value.ToString() + " and ";
+                sql += kp.Key.ToLower() + "='" + kp.Value.ToString() + "' and ";
             }
             sql = sql.Remove(sql.Length - 4);
             Console.WriteLine(sql);
@@ -147,6 +152,7 @@ namespace DB
                 }
                 res.Add(instance);
             }
+            dr.Close();
             return res;
         }
 
@@ -172,6 +178,7 @@ namespace DB
                 }
                 res.Add(instance);
             }
+            dr.Close();
             return res;
         }
     }
