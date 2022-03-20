@@ -61,3 +61,26 @@ insert into filieres (code,designation) values ("GIND","Génie industriel");
 insert into filieres (code,designation) values ("GSTR","Génie systèmes réseaux et télécomes");
 insert into filieres (code,designation) values ("GSEA","Génie éléctronique et automatique");
 insert into filieres (code,designation) values ("G3EI","Génie Environement");
+
+
+create or replace trigger moyenneAnnee 
+after insert or update or delete on notes
+for each row
+declare
+numMatiere int;
+numNote int;
+codeFiliere varchar(10);
+moy int;
+niv varchar(10);
+begin
+
+select niveau into niv from eleves where code = :new.code_eleve;
+select code into codeFiliere from filiere where code in ( select code_fil from eleves where code = :new.code_eleve)
+if inserting then
+select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere);
+select count(*) into numNote from notes where code_eleve = :new.code_eleve;
+select sum(note) into moy from note where code_eleve = :new.code_eleve;
+if numMatiere = numNote then
+    moy = moy / numNote;
+    insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(:new.code_eleve, codeFiliere, niv, moy);
+elsif deleting

@@ -32,21 +32,21 @@ namespace GestionScolarite
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.filiereCb = new System.Windows.Forms.ComboBox();
+            this.MatiereCb = new System.Windows.Forms.ComboBox();
+            this.NiveauCb = new System.Windows.Forms.ComboBox();
             this.RechercherBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.moyenneTxt = new System.Windows.Forms.TextBox();
+            this.NoteGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.NoteGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(76, 48);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(84, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 25);
             this.label1.TabIndex = 0;
@@ -55,8 +55,8 @@ namespace GestionScolarite
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(76, 132);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(84, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 1;
@@ -65,47 +65,54 @@ namespace GestionScolarite
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(478, 48);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(531, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Niveau";
             // 
-            // comboBox1
+            // filiereCb
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(210, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(219, 33);
-            this.comboBox1.TabIndex = 3;
+            this.filiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.filiereCb.FormattingEnabled = true;
+            this.filiereCb.Location = new System.Drawing.Point(233, 56);
+            this.filiereCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.filiereCb.Name = "filiereCb";
+            this.filiereCb.Size = new System.Drawing.Size(243, 33);
+            this.filiereCb.TabIndex = 3;
+            this.filiereCb.SelectedIndexChanged += new System.EventHandler(this.filiereCb_SelectedIndexChanged);
             // 
-            // comboBox2
+            // MatiereCb
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(210, 129);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(219, 33);
-            this.comboBox2.TabIndex = 4;
+            this.MatiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MatiereCb.FormattingEnabled = true;
+            this.MatiereCb.Location = new System.Drawing.Point(233, 161);
+            this.MatiereCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MatiereCb.Name = "MatiereCb";
+            this.MatiereCb.Size = new System.Drawing.Size(243, 33);
+            this.MatiereCb.TabIndex = 4;
+            this.MatiereCb.SelectedIndexChanged += new System.EventHandler(this.MatiereCb_SelectedIndexChanged);
             // 
-            // comboBox3
+            // NiveauCb
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(612, 45);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(183, 33);
-            this.comboBox3.TabIndex = 5;
+            this.NiveauCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NiveauCb.FormattingEnabled = true;
+            this.NiveauCb.Location = new System.Drawing.Point(680, 56);
+            this.NiveauCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NiveauCb.Name = "NiveauCb";
+            this.NiveauCb.Size = new System.Drawing.Size(203, 33);
+            this.NiveauCb.TabIndex = 5;
+            this.NiveauCb.SelectedIndexChanged += new System.EventHandler(this.NiveauCb_SelectedIndexChanged);
             // 
             // RechercherBtn
             // 
             this.RechercherBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.RechercherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RechercherBtn.Location = new System.Drawing.Point(612, 129);
+            this.RechercherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RechercherBtn.Location = new System.Drawing.Point(680, 161);
+            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RechercherBtn.Name = "RechercherBtn";
-            this.RechercherBtn.Size = new System.Drawing.Size(183, 43);
+            this.RechercherBtn.Size = new System.Drawing.Size(203, 54);
             this.RechercherBtn.TabIndex = 6;
             this.RechercherBtn.Text = "Rechercher";
             this.RechercherBtn.UseVisualStyleBackColor = false;
@@ -114,50 +121,55 @@ namespace GestionScolarite
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(137, 434);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(152, 542);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(222, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "Moyenne de la classe";
             // 
-            // textBox1
+            // moyenneTxt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(447, 429);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 30);
-            this.textBox1.TabIndex = 8;
+            this.moyenneTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.moyenneTxt.Location = new System.Drawing.Point(497, 536);
+            this.moyenneTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.moyenneTxt.Name = "moyenneTxt";
+            this.moyenneTxt.Size = new System.Drawing.Size(294, 30);
+            this.moyenneTxt.TabIndex = 8;
             // 
-            // dataGridView1
+            // NoteGrid
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Info;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(80, 199);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(758, 184);
-            this.dataGridView1.TabIndex = 9;
+            this.NoteGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NoteGrid.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.NoteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.NoteGrid.Location = new System.Drawing.Point(89, 249);
+            this.NoteGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NoteGrid.Name = "NoteGrid";
+            this.NoteGrid.RowHeadersWidth = 62;
+            this.NoteGrid.RowTemplate.Height = 28;
+            this.NoteGrid.Size = new System.Drawing.Size(842, 230);
+            this.NoteGrid.TabIndex = 9;
             // 
             // Consultation_Notes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 497);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1030, 621);
+            this.Controls.Add(this.NoteGrid);
+            this.Controls.Add(this.moyenneTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RechercherBtn);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.NiveauCb);
+            this.Controls.Add(this.MatiereCb);
+            this.Controls.Add(this.filiereCb);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Consultation_Notes";
             this.Text = "Consultation_Notes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Consultation_Notes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.NoteGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,12 +180,12 @@ namespace GestionScolarite
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox filiereCb;
+        private System.Windows.Forms.ComboBox MatiereCb;
+        private System.Windows.Forms.ComboBox NiveauCb;
         private System.Windows.Forms.Button RechercherBtn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox moyenneTxt;
+        private System.Windows.Forms.DataGridView NoteGrid;
     }
 }

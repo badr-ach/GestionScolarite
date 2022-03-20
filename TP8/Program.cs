@@ -48,7 +48,7 @@ namespace Models
             Eleve etd = new Eleve();
             Dictionary<string, object> dico = new Dictionary<string, object>();
             dico.Add("code_fil", "fdsfsdf");
-            List<dynamic> codeExist = etd.Select(dico);
+            List<dynamic> codeExist = Eleve.select<Eleve>(dico);
         }
     }
 }

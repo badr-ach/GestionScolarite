@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,31 @@ namespace GestionScolarite
         }
         private void Gestion_Notes_Load(object sender, EventArgs e)
         {
-
+            CodeEleveTxt.Text = Gestion_Etudiants.CodeEleve;
+            Dictionary<string, object> dico = new Dictionary<string, Object>();
+            dico.Add("code", CodeEleveTxt.Text);
+            Eleve elv = Eleve.select<Eleve>(dico)[0];
+            dico.Clear();
+            dico.Add("code_fil", elv.code_fil);
+            dico.Add("niveau", elv.niveau);
+            List<dynamic> lm = Module.select<Module>(dico);
+            List<string> lCodeModule = new List<string>();
+            foreach(Module m in lm)
+            {
+                lCodeModule.Add(m.code);
+            }
+            List<dynamic> lMat = new List<dynamic>();
+            foreach(string module in lCodeModule)   
+            {
+                dico.Clear();
+                dico.Add("code_module", module);
+                List<dynamic> listMatiere = Matiere.select<Matiere>(dico);
+                lMat.AddRange(listMatiere);
+             }
+            foreach(Matiere m in lMat)
+            {
+                MatiereCb.Items.Add(m.code);
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -45,14 +70,18 @@ namespace GestionScolarite
 
         private void AjouterBtn_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(MatiereCb.SelectedItem.ToString()) && !string.IsNullOrWhiteSpace(NoteTxt.Text)){
-
+            if(!string.IsNullOrWhiteSpace(MatiereCb.Text) && !string.IsNullOrWhiteSpace(NoteTxt.Text)){
+                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 List<dynamic> ln = getNote();
-                if(ln.Count == 0)
+                if (convertedNote < 0 || convertedNote > 20)
                 {
-                    Note note = new Note(CodeEleveTxt.Text, MatiereCb.Text, float.Parse(NoteTxt.Text));
+                    MessageBox.Show("veuillez saisir une note entre 0 et 20");
+                }
+                else if (ln.Count == 0)
+                {
+                    Note note = new Note(CodeEleveTxt.Text, MatiereCb.Text, convertedNote);
                     note.Save();
-                    MessageBox.Show("Note Ajoutee");
+                    MessageBox.Show("Note Ajoutee");                  
                 }
                 else
                 {
@@ -63,23 +92,29 @@ namespace GestionScolarite
 
         private void ModifierBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(MatiereCb.SelectedItem.ToString()) && !string.IsNullOrWhiteSpace(NoteTxt.Text))
+            if (!string.IsNullOrWhiteSpace(MatiereCb.Text) && !string.IsNullOrWhiteSpace(NoteTxt.Text))
             {
                 Note note;
-       
                 List<dynamic> ln = getNote();
-                if(ln.Count == 0)
+                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                if (convertedNote < 0 || convertedNote > 20)
                 {
-                    note = new Note(CodeEleveTxt.Text, MatiereCb.Text, float.Parse(NoteTxt.Text));
-                    note.Save();
+                    MessageBox.Show("veuillez saisir une note entre 0 et 20");
                 }
-                else
+                else if (ln.Count == 0)
+                {                 
+                     note = new Note(CodeEleveTxt.Text, MatiereCb.Text, convertedNote);
+                     note.Save(); 
+                    MessageBox.Show("Note Modifiee");
+                }
+                else 
                 {
                     note = ln[0];
-                    note.note = float.Parse(NoteTxt.Text);
+                    note.note = convertedNote;
                     note.Save();
+                    MessageBox.Show("Note Modifiee");
                 }
-                MessageBox.Show("Note Modifiee");
+                
             }
             else
             {
@@ -121,8 +156,8 @@ namespace GestionScolarite
                 }
                 else
                 {
-                    NoteTxt.Text = ln[0].note;
-                    MessageBox.Show("Code Eleve : "+ CodeEleveTxt + "\nmodule : " + MatiereCb.Text + "\nNote : " + ln[0].note);
+                    NoteTxt.Text = ln[0].note.ToString();
+                    MessageBox.Show("Code Eleve : "+ CodeEleveTxt.Text + "\nmodule : " + MatiereCb.Text + "\nNote : " + ln[0].note);
                 }
             }
         }

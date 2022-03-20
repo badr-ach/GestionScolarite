@@ -19,12 +19,17 @@ namespace GestionScolarite
 
         private void billanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new Bilan_Annuel().ShowDialog();
         }
 
         private void etudiantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Gestion_Etudiants().ShowDialog();
+        }
+
+        private void notesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Consultation_Notes().ShowDialog();
         }
     }
 }

@@ -1,0 +1,13 @@
+models : added ' ' to static select
+
+gestion etudiant :
+	added attribute CodeEleve (to pass it to Gestion_notes) 
+	gestion_notesbtn : added eleve existance verification and gestion_notes.showDialog()
+	
+form1 : Added access to Notes ( consultation des notes ) and bilan ( bilan annuelle ) from menu	
+
+script.sql : changed note type to double ( works only for mysql)	
+
+to fix : find convenient type for note in sql server mapping ( mysql has double unlike sql server)
+
+

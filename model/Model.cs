@@ -162,7 +162,7 @@ namespace DB
             string sql = "Select * from " +typeof(T).Name + "s where ";
             foreach (KeyValuePair<string, object> kp in dico)
             {
-                sql += kp.Key + "=" + kp.Value.ToString() + " and ";
+                sql += kp.Key + "='" + kp.Value.ToString() + "' and ";
             }
             sql = sql.Remove(sql.Length - 4);
             Console.WriteLine(sql);

@@ -12,11 +12,13 @@ using Models;
 
 namespace GestionScolarite
 {
+   
     public partial class Gestion_Etudiants : Form
     {
+        public static string CodeEleve = "";
         public Gestion_Etudiants()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -55,7 +57,19 @@ namespace GestionScolarite
             {
                 if (!String.IsNullOrWhiteSpace(Code.Text))
                 {
-
+                    Dictionary<string, object> dico = new Dictionary<string, Object>();
+                    dico.Add("code", Code.Text);
+                    List<dynamic> le = Eleve.select<Eleve>(dico);
+                    if(le.Count == 0)
+                    {
+                        MessageBox.Show("code eleve invalide");
+                    }
+                    else
+                    {
+                        CodeEleve = Code.Text;
+                        new Gestion_Notes().ShowDialog();
+                    }
+                    
                 }
                 else
                 {

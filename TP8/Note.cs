@@ -9,18 +9,18 @@ namespace Models
 {
     public class Note : Model
     {
-        public string codeEleve;
-        public string codeMat;
-        public float note;
+        public string code_eleve;
+        public string code_mat;
+        public double note;
 
         public Note()
         {
         }
 
-        public Note(string codeEleve, string codeMat, float note)
+        public Note(string codeEleve, string codeMat, double note)
         {
-            this.codeEleve = codeEleve;
-            this.codeMat = codeMat;
+            this.code_eleve = codeEleve;
+            this.code_mat = codeMat;
             this.note = note;
         }
     }
