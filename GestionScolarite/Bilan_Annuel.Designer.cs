@@ -58,7 +58,7 @@ namespace GestionScolarite
             // MoyenneAnuelleTxt
             // 
             this.MoyenneAnuelleTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MoyenneAnuelleTxt.Location = new System.Drawing.Point(516, 551);
+            this.MoyenneAnuelleTxt.Location = new System.Drawing.Point(335, 553);
             this.MoyenneAnuelleTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MoyenneAnuelleTxt.Name = "MoyenneAnuelleTxt";
             this.MoyenneAnuelleTxt.Size = new System.Drawing.Size(294, 30);
@@ -68,7 +68,7 @@ namespace GestionScolarite
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(171, 558);
+            this.label4.Location = new System.Drawing.Point(103, 556);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 25);
             this.label4.TabIndex = 27;
@@ -89,6 +89,7 @@ namespace GestionScolarite
             // 
             // NiveauCb
             // 
+            this.NiveauCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NiveauCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NiveauCb.FormattingEnabled = true;
             this.NiveauCb.Location = new System.Drawing.Point(699, 71);
@@ -100,6 +101,7 @@ namespace GestionScolarite
             // 
             // EtudiantCb
             // 
+            this.EtudiantCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EtudiantCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EtudiantCb.FormattingEnabled = true;
             this.EtudiantCb.Location = new System.Drawing.Point(252, 176);
@@ -110,6 +112,7 @@ namespace GestionScolarite
             // 
             // FiliereCb
             // 
+            this.FiliereCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FiliereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FiliereCb.FormattingEnabled = true;
             this.FiliereCb.Location = new System.Drawing.Point(252, 71);

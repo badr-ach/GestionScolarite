@@ -94,6 +94,7 @@ namespace GestionScolarite
             // 
             // MatiereCb
             // 
+            this.MatiereCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MatiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MatiereCb.FormattingEnabled = true;
             this.MatiereCb.Location = new System.Drawing.Point(252, 138);

@@ -74,6 +74,7 @@ namespace GestionScolarite
             // 
             // filiereCb
             // 
+            this.filiereCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.filiereCb.FormattingEnabled = true;
             this.filiereCb.Location = new System.Drawing.Point(233, 56);
@@ -85,6 +86,7 @@ namespace GestionScolarite
             // 
             // MatiereCb
             // 
+            this.MatiereCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MatiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MatiereCb.FormattingEnabled = true;
             this.MatiereCb.Location = new System.Drawing.Point(233, 161);
@@ -96,6 +98,7 @@ namespace GestionScolarite
             // 
             // NiveauCb
             // 
+            this.NiveauCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NiveauCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NiveauCb.FormattingEnabled = true;
             this.NiveauCb.Location = new System.Drawing.Point(680, 56);

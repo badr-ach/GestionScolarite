@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Excel = Microsoft.Office.Interop.Excel;
 using Models;
 namespace GestionScolarite
 {
     public partial class Bilan_Annuel : Form
     {
+        public bool DataLoaded = false;
         public Bilan_Annuel()
         {
             InitializeComponent();
@@ -20,14 +15,7 @@ namespace GestionScolarite
 
         private void RechercherBtn_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(FiliereCb.Text) && !string.IsNullOrWhiteSpace(NiveauCb.Text) && !string.IsNullOrWhiteSpace(EtudiantCb.Text))
-            {
-                LoadData();
-            }
-            else
-            {
-                MessageBox.Show("Veuillez remplir tous les champs");
-            }
+            DataLoaded = LoadData();
         }
 
         private void Bilan_Annuel_Load(object sender, EventArgs e)
@@ -89,44 +77,87 @@ namespace GestionScolarite
         {
             LoadEleve();
         }
-        public void LoadData()
+        public bool LoadData()
         {
-            BilanGrid.Rows.Clear();
-            Dictionary<string, Object> dico = new Dictionary<string, Object>();
-            dico.Add("code_eleve", EtudiantCb.Text);
-            List<dynamic> ln = Note.select<Note>(dico);
-            List<List<string>> data = new List<List<string>>();
-            if(ln.Count != 0)
+            if (!string.IsNullOrWhiteSpace(FiliereCb.Text) && !string.IsNullOrWhiteSpace(NiveauCb.Text) && !string.IsNullOrWhiteSpace(EtudiantCb.Text))
             {
-                double moyenne = 0;
-                foreach(Note note in ln)
+                BilanGrid.Rows.Clear();
+                Dictionary<string, Object> dico = new Dictionary<string, Object>();
+                dico.Add("code_eleve", EtudiantCb.Text);
+                List<dynamic> ln = Note.select<Note>(dico);
+                List<List<string>> data = new List<List<string>>();
+                if (ln.Count != 0)
                 {
-                    dico.Clear();
-                    dico.Add("code", note.code_mat);
-                    List<dynamic> matiere = Matiere.select<Matiere>(dico);
-                    dico.Clear();
-                    dico.Add("code", matiere[0].code_module);
-                    List<dynamic> module = Module.select<Module>(dico);
-                    List<string> row = new List<string>();
-                    row.Add(matiere[0].code);
-                    row.Add(matiere[0].designation);
-                    row.Add(module[0].semestre);
-                    row.Add(note.note.ToString());
-                    data.Add(row);
-                    moyenne += note.note;
+                    double moyenne = 0;
+                    foreach (Note note in ln)
+                    {
+                        dico.Clear();
+                        dico.Add("code", note.code_mat);
+                        List<dynamic> matiere = Matiere.select<Matiere>(dico);
+                        dico.Clear();
+                        dico.Add("code", matiere[0].code_module);
+                        List<dynamic> module = Module.select<Module>(dico);
+                        List<string> row = new List<string>();
+                        row.Add(matiere[0].code);
+                        row.Add(matiere[0].designation);
+                        row.Add(module[0].semestre);
+                        row.Add(note.note.ToString());
+                        data.Add(row);
+                        moyenne += note.note;
+                    }
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        BilanGrid.Rows.Add();
+                        BilanGrid.Rows[i].Cells[0].Value = data[i][0];
+                        BilanGrid.Rows[i].Cells[1].Value = data[i][1];
+                        BilanGrid.Rows[i].Cells[2].Value = data[i][2];
+                        BilanGrid.Rows[i].Cells[3].Value = data[i][3];
+                    }
+                    moyenne /= data.Count;
+                    MoyenneAnuelleTxt.Text = moyenne.ToString();
+                    return true;
                 }
-                for (int i = 0; i < data.Count; i++)
-                {
-                    BilanGrid.Rows.Add();
-                    BilanGrid.Rows[i].Cells[0].Value = data[i][0];
-                    BilanGrid.Rows[i].Cells[1].Value = data[i][1];
-                    BilanGrid.Rows[i].Cells[2].Value = data[i][2];
-                    BilanGrid.Rows[i].Cells[3].Value = data[i][3];
-                }
-                moyenne /= data.Count;
-                MoyenneAnuelleTxt.Text = moyenne.ToString();
+                return false;
             }
-           
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs");
+                return false;
+            }
         }
+            
+            
+
+        /*private void ExcelBtn_Click(object sender, EventArgs e)
+        {
+            DataLoaded = LoadData();
+            if (DataLoaded)
+            {
+                Excel.Application myexcelApplication = new Excel.Application();
+                if (myexcelApplication != null)
+                {
+                    Excel.Workbook myexcelWorkbook = myexcelApplication.Workbooks.Add();
+                    Excel.Worksheet myexcelWorksheet = (Excel.Worksheet)myexcelWorkbook.Sheets.Add();
+                    myexcelWorksheet.Cells[1, 1] = "Code Matiere";
+                    myexcelWorksheet.Cells[1, 2] = "Designation";
+                    myexcelWorksheet.Cells[1, 3] = "Semestre";
+                    myexcelWorksheet.Cells[1, 4] = "Note";
+                    for (int i = 0; i < BilanGrid.RowCount; i++)
+                    {
+                        myexcelWorksheet.Cells[i + 2, 1] = BilanGrid.Rows[i].Cells[0].Value;
+                        myexcelWorksheet.Cells[i + 2, 2] = BilanGrid.Rows[i].Cells[1].Value;
+                        myexcelWorksheet.Cells[i + 2, 3] = BilanGrid.Rows[i].Cells[2].Value;
+                        myexcelWorksheet.Cells[i + 2, 4] = BilanGrid.Rows[i].Cells[3].Value;
+                    }
+
+
+                    string path = "C:\\Computer Science\\GINF2\\" + FiliereCb.Text + "_" + NiveauCb.Text+".xls";
+                    myexcelApplication.ActiveWorkbook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal);
+
+                    myexcelWorkbook.Close();
+                    myexcelApplication.Quit();
+                }
+            }
+        }*/
     }
 }

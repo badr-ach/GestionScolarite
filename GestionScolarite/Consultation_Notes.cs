@@ -87,7 +87,7 @@ namespace GestionScolarite
             try
             {
                 Dictionary<string, Object> dico = new Dictionary<string, Object>();
-                
+                MatiereCb.Items.Clear();
                 dico.Add("niveau", NiveauCb.Text);
                 dico.Add("code_fil", filiereCb.Text);
                 List<dynamic> lmodule = Module.select<Module>(dico);
@@ -128,12 +128,16 @@ namespace GestionScolarite
                 dico.Add("code_eleve", elv.code);
                 dico.Add("code_mat", MatiereCb.Text);
                 List<dynamic> note = Note.select<Note>(dico);
-                List<string> etud = new List<string>();
-                etud.Add(elv.code);
-                etud.Add(elv.nom);
-                etud.Add(elv.prenom);
-                etud.Add(note[0].note.ToString());
-                l.Add(etud);
+                if(note.Count != 0)
+                {
+                    List<string> etud = new List<string>();
+                    etud.Add(elv.code);
+                    etud.Add(elv.nom);
+                    etud.Add(elv.prenom);
+                    etud.Add(note[0].note.ToString());
+                    l.Add(etud);
+                }
+                
             }
             NoteGrid.Rows.Clear();
             for(int i = 0; i < l.Count; i++) 
@@ -145,8 +149,11 @@ namespace GestionScolarite
                 NoteGrid.Rows[i].Cells[3].Value = l[i][3];
                 moyenne += double.Parse(l[i][3], CultureInfo.InvariantCulture.NumberFormat); ;
             }
-            moyenne /= l.Count;
-            moyenneTxt.Text = moyenne.ToString();
+            if (l.Count != 0)
+            {
+                moyenne /= l.Count;
+                moyenneTxt.Text = moyenne.ToString();
+            }
         }
     }
 }
