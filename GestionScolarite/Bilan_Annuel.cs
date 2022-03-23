@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 using Models;
 namespace GestionScolarite
 {
@@ -88,7 +87,7 @@ namespace GestionScolarite
                 List<List<string>> data = new List<List<string>>();
                 if (ln.Count != 0)
                 {
-                    double moyenne = 0;
+                    decimal moyenne = 0;
                     foreach (Note note in ln)
                     {
                         dico.Clear();

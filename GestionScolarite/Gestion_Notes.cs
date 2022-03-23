@@ -71,7 +71,7 @@ namespace GestionScolarite
         private void AjouterBtn_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(MatiereCb.Text) && !string.IsNullOrWhiteSpace(NoteTxt.Text)){
-                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                decimal convertedNote = decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 List<dynamic> ln = getNote();
                 if (convertedNote < 0 || convertedNote > 20)
                 {
@@ -96,7 +96,7 @@ namespace GestionScolarite
             {
                 Note note;
                 List<dynamic> ln = getNote();
-                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                decimal convertedNote =     decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 if (convertedNote < 0 || convertedNote > 20)
                 {
                     MessageBox.Show("veuillez saisir une note entre 0 et 20");

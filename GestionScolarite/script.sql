@@ -39,7 +39,7 @@ create table notes(
     id int AUTO_INCREMENT,
     code_eleve varchar(10),
     code_mat varchar(10),
-    note numeric,
+    note numeric(9,4),
     PRIMARY KEY(id),
     FOREIGN KEY (code_eleve) REFERENCES eleves(code),
     FOREIGN KEY (code_mat) REFERENCES matieres(code)
@@ -105,8 +105,48 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ("E12", "NOM12",
 insert into eleves (code, nom, prenom, niveau, code_fil) values ("E13", "NOM13", "PRENOM13", '3', "GIND");
 
 
+DELIMITER |
+CREATE PROCEDURE Insert_
+(
+    IN code_eleve varchar(100),
+    IN code_mat varchar(100),
+    IN note numeric
+)
+BEGIN
+    Insert into notes(code_eleve,code_mat,note) values (code_eleve,code_mat,note);
+END|
 
-    
+DELIMITER ;
+
+
+DELIMITER |
+CREATE PROCEDURE Update_
+(
+	IN id int,
+    IN code_eleve varchar(100),
+    IN code_mat varchar(100),
+    IN note numeric
+)
+BEGIN
+    Update notes set note=note where code_eleve=code_eleve and code_mat=code_mat and id=id;
+END|
+
+DELIMITER ;
+
+
+DELIMITER |
+CREATE PROCEDURE Delete_
+(
+	IN id int
+)
+BEGIN
+    Delete from notes where id = id;
+END|
+
+DELIMITER ;
+
+
+
 create or replace trigger moyenneAnnee 
 after insert or update or delete on notes
 for each row
