@@ -96,6 +96,7 @@ namespace GestionScolarite
             {
                 Note note;
                 List<dynamic> ln = getNote();
+
                 double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 if (convertedNote < 0 || convertedNote > 20)
                 {
@@ -110,6 +111,7 @@ namespace GestionScolarite
                 else 
                 {
                     note = ln[0];
+                    MessageBox.Show(note.note.ToString());
                     note.note = convertedNote;
                     note.Save();
                     MessageBox.Show("Note Modifiee");

@@ -105,8 +105,55 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ("E12", "NOM12",
 insert into eleves (code, nom, prenom, niveau, code_fil) values ("E13", "NOM13", "PRENOM13", '3', "GIND");
 
 
+delimiter //
+create trigger moyenneInsert
+after insert on notes
+for each row
+begin
 
-    
+declare numMatiere int;
+declare numNote int;
+declare codeFiliere varchar(10);
+declare moy int;
+declare niv varchar(10);
+
+select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
+select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere);
+select count(*) into numNote from notes where code_eleve = new.code_eleve;
+
+if ( numMatiere = numNote ) then
+    select AVG(note) into moy from note where code_eleve = new.code_eleve;
+    insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(new.code_eleve, codeFiliere, niv, moy);
+end if; 
+end //
+delimiter ;
+
+delimiter //
+create trigger moyenneUpdate
+after update on notes
+for each row
+begin
+declare moy int;
+select AVG(note) into moy from note where code_eleve = new.code_eleve;
+update moyennes set moyenne = moy where code_eleve = new.code_eleve;
+end //
+
+delimiter ;
+
+delimiter //
+
+create trigger moyenneDelete
+after delete on notes
+for each row
+begin
+delete from moyennes where code_eleve = old.code_eleve;
+end //
+
+delimiter ;
+
+
+delimiter //
+
 create or replace trigger moyenneAnnee 
 after insert or update or delete on notes
 for each row
@@ -118,12 +165,23 @@ moy int;
 niv varchar(10);
 begin
 
-select niveau into niv from eleves where code = :new.code_eleve;
-select code into codeFiliere from filiere where code in ( select code_fil from eleves where code = :new.code_eleve);
+select niveau, code_fil into niv, codeFilire from eleves where code = :new.code_eleve;
 if inserting then
-select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere);
-select count(*) into numNote from notes where code_eleve = :new.code_eleve;
-select AVG(note) into moy from note where code_eleve = :new.code_eleve;
-if numMatiere = numNote then
+    select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere);
+    select count(*) into numNote from notes where code_eleve = :new.code_eleve;
+    select AVG(note) into moy from note where code_eleve = :new.code_eleve;
+if ( numMatiere = numNote ) then
     insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(:new.code_eleve, codeFiliere, niv, moy);
-elsif deleting
+end if; 
+elseif updating then 
+    update moyennes set moyenne = moy where code_eleve = :new.code_eleve;
+elseif deleting then 
+    delete from moyennes where code_eleve = :new.code_eleve;
+end if;
+end //
+
+delimiter ;
+
+
+
+create or replace procedure insert()

@@ -45,10 +45,12 @@ namespace Models
                         }*/
 
             /*Filiere.all<Filiere>();*/
-            Eleve etd = new Eleve();
-            Dictionary<string, object> dico = new Dictionary<string, object>();
-            dico.Add("code_fil", "fdsfsdf");
-            List<dynamic> codeExist = Eleve.select<Eleve>(dico);
+            //Eleve etd = new Eleve();
+            //Dictionary<string, object> dico = new Dictionary<string, object>();
+            //dico.Add("code_fil", "fdsfsdf");
+            //List<dynamic> codeExist = Eleve.select<Eleve>(dico);
+            Note not = new Note("maj", "maj", 20); not.id  = 6;
+            not.Save();
         }
     }
 }

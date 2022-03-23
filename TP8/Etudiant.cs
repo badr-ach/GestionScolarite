@@ -13,9 +13,6 @@ namespace Models
         public float moyenne;
         public int age;
 
-        public override string ToString()
-        {
-            return "nom = " + nom;
-        }
+       
     }
 }

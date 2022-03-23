@@ -54,7 +54,14 @@ namespace GestionScolarite
                 NiveauCb.Items.Add(2);
                 NiveauCb.Items.Add(3);
             }
-            LoadEleve();
+            if(!string.IsNullOrWhiteSpace(NiveauCb.Text) && !string.IsNullOrWhiteSpace(FiliereCb.Text))
+            {
+                LoadEleve();
+            }
+            else
+            {
+                EtudiantCb.Items.Clear();
+            }
             
         }
         public void LoadEleve()
@@ -125,8 +132,13 @@ namespace GestionScolarite
                 return false;
             }
         }
-            
-            
+
+        private void BilanGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
 
         /*private void ExcelBtn_Click(object sender, EventArgs e)
         {

@@ -73,6 +73,10 @@ namespace GestionScolarite
             {
                 LoadMatiere();
             }
+            else
+            {
+                MatiereCb.Items.Clear();
+            }
         }
 
         private void NiveauCb_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,7 +143,7 @@ namespace GestionScolarite
                 }
                 
             }
-            NoteGrid.Rows.Clear();
+            
             for(int i = 0; i < l.Count; i++) 
             {
                 NoteGrid.Rows.Add();

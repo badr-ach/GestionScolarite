@@ -55,6 +55,7 @@ namespace DB
                 sql = sql.Remove(sql.Length - 1);
                 sql += " where id = " + this.id;
                 Console.WriteLine(sql);
+               
                 return Connection.IUD(sql);
             }
         }

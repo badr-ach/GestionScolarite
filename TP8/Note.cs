@@ -13,7 +13,7 @@ namespace Models
         public string code_mat;
         public double note;
 
-        public Note()
+        public Note() 
         {
         }
 
