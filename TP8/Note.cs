@@ -11,13 +11,13 @@ namespace Models
     {
         public string code_eleve;
         public string code_mat;
-        public double note;
+        public decimal note;
 
         public Note() 
         {
         }
 
-        public Note(string codeEleve, string codeMat, double note)
+        public Note(string codeEleve, string codeMat, decimal note)
         {
             this.code_eleve = codeEleve;
             this.code_mat = codeMat;

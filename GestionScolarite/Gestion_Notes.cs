@@ -27,7 +27,7 @@ namespace GestionScolarite
             dico.Add("code_mat", MatiereCb.Text);
             List<dynamic> ln = Note.select<Note>(dico);
             return ln;
-        }
+        } 
         private void Gestion_Notes_Load(object sender, EventArgs e)
         {
             CodeEleveTxt.Text = Gestion_Etudiants.CodeEleve;
@@ -71,7 +71,7 @@ namespace GestionScolarite
         private void AjouterBtn_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(MatiereCb.Text) && !string.IsNullOrWhiteSpace(NoteTxt.Text)){
-                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                decimal convertedNote = decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 List<dynamic> ln = getNote();
                 if (convertedNote < 0 || convertedNote > 20)
                 {
@@ -96,8 +96,7 @@ namespace GestionScolarite
             {
                 Note note;
                 List<dynamic> ln = getNote();
-
-                double convertedNote = double.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                decimal convertedNote =     decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 if (convertedNote < 0 || convertedNote > 20)
                 {
                     MessageBox.Show("veuillez saisir une note entre 0 et 20");
@@ -111,7 +110,7 @@ namespace GestionScolarite
                 else 
                 {
                     note = ln[0];
-                    MessageBox.Show(note.note.ToString());
+                    MessageBox.Show(note.id + note.code_eleve + note.note.ToString());
                     note.note = convertedNote;
                     note.Save();
                     MessageBox.Show("Note Modifiee");
