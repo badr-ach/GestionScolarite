@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 using Models;
 namespace GestionScolarite
@@ -87,6 +88,7 @@ namespace GestionScolarite
         {
             if (!string.IsNullOrWhiteSpace(FiliereCb.Text) && !string.IsNullOrWhiteSpace(NiveauCb.Text) && !string.IsNullOrWhiteSpace(EtudiantCb.Text))
             {
+                MoyenneAnuelleTxt.Text = "";
                 BilanGrid.Rows.Clear();
                 Dictionary<string, Object> dico = new Dictionary<string, Object>();
                 dico.Add("code_eleve", EtudiantCb.Text);
@@ -94,7 +96,6 @@ namespace GestionScolarite
                 List<List<string>> data = new List<List<string>>();
                 if (ln.Count != 0)
                 {
-                    decimal moyenne = 0;
                     foreach (Note note in ln)
                     {
                         dico.Clear();
@@ -108,8 +109,7 @@ namespace GestionScolarite
                         row.Add(matiere[0].designation);
                         row.Add(module[0].semestre);
                         row.Add(note.note.ToString());
-                        data.Add(row);
-                        moyenne += note.note;
+                        data.Add(row);       
                     }
                     for (int i = 0; i < data.Count; i++)
                     {
@@ -119,8 +119,15 @@ namespace GestionScolarite
                         BilanGrid.Rows[i].Cells[2].Value = data[i][2];
                         BilanGrid.Rows[i].Cells[3].Value = data[i][3];
                     }
-                    moyenne /= data.Count;
-                    MoyenneAnuelleTxt.Text = moyenne.ToString();
+                    Dictionary<string, Object> dictio = new Dictionary<string, object>();
+                    dictio.Add("code_eleve", EtudiantCb.Text);
+                    dictio.Add("code_fil", FiliereCb.Text);
+                    dictio.Add("niveau", NiveauCb.Text);
+                    List<dynamic> moy = Moyenne.select<Moyenne>(dictio);
+                    if(moy.Count != 0)
+                    {
+                        MoyenneAnuelleTxt.Text = moy[0].moyenne.ToString();
+                    }
                     return true;
                 }
                 return false;

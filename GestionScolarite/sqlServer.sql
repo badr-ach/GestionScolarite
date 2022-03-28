@@ -91,3 +91,32 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ('E10', 'NOM10',
 insert into eleves (code, nom, prenom, niveau, code_fil) values ('E11', 'NOM11', 'PRENOM11', '2', 'GINF');
 insert into eleves (code, nom, prenom, niveau, code_fil) values ('E12', 'NOM12', 'PRENOM12', '3', 'GIND');
 insert into eleves (code, nom, prenom, niveau, code_fil) values ('E13', 'NOM13', 'PRENOM13', '3', 'GIND');
+
+
+
+create trigger moyenne
+on dbo.notes 
+after insert, update, delete 
+for each row
+
+create trigger moyenneInsert
+on notes
+after insert
+for each row
+
+declare 
+numMatiere int;
+numNote int;
+codeFiliere varchar(10);
+moy int;
+niv varchar(10);
+begin
+
+select niveau, code_fil into niv, codeFiliere from eleves where code = :new.code_eleve;
+select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere AND niveau = niv);
+select count(*) into numNote from notes where code_eleve = :new.code_eleve;
+
+if ( numMatiere = numNote ) then
+    select AVG(note) into moy from noteS where code_eleve = new.code_eleve;
+    insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(:new.code_eleve, codeFiliere, niv, moy);
+end if; 

@@ -91,6 +91,7 @@ namespace GestionScolarite
             this.NoteTxt.Name = "NoteTxt";
             this.NoteTxt.Size = new System.Drawing.Size(228, 30);
             this.NoteTxt.TabIndex = 4;
+            this.NoteTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoteTxt_KeyPress);
             // 
             // MatiereCb
             // 

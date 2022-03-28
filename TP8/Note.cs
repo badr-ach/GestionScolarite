@@ -19,8 +19,8 @@ namespace Models
 
         public Note(string codeEleve, string codeMat, decimal note)
         {
-            this.code_eleve = codeEleve;
-            this.code_mat = codeMat;
+            code_eleve = codeEleve;
+            code_mat = codeMat;
             this.note = note;
         }
     }

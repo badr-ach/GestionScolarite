@@ -105,6 +105,8 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ("E12", "NOM12",
 insert into eleves (code, nom, prenom, niveau, code_fil) values ("E13", "NOM13", "PRENOM13", '3', "GIND");
 
 
+
+
 delimiter //
 create trigger moyenneInsert
 after insert on notes
