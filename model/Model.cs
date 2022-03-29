@@ -34,7 +34,6 @@ namespace DB
             {
                 try
                 {
-                    /*string type = this.GetType().Name;*/
                     Dictionary<string, object> parameters = new Dictionary<string, object>();
                     FieldInfo[] fields = this.GetType().GetFields();
                     for (int i = 0; i < fields.Length; i++)
@@ -72,7 +71,6 @@ namespace DB
             {
                 try
                 {
-                    /*string type = this.GetType().Name;*/
                     Dictionary<string, object> parameters = new Dictionary<string, object>();
                     FieldInfo[] fields = this.GetType().GetFields();
                     for (int i = 0; i < fields.Length; i++)
