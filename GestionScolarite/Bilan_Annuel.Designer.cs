@@ -54,6 +54,7 @@ namespace GestionScolarite
             this.BilanGrid.RowTemplate.Height = 28;
             this.BilanGrid.Size = new System.Drawing.Size(842, 230);
             this.BilanGrid.TabIndex = 29;
+            this.BilanGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BilanGrid_CellContentClick);
             // 
             // MoyenneAnuelleTxt
             // 

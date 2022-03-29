@@ -10,6 +10,7 @@ namespace Models
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             Eleve etd = new Eleve();
             etd.code = "P1101";
             etd.nom = "nom e1";
@@ -35,6 +36,49 @@ namespace Models
             etd.Delete();
 
 
+=======
+            /*            Etudiant e = new Etudiant();
+
+                        e.id = 1;
+                        e.Delete();
+                        e.nom = "Badr";
+                        e.prenom = "Al Achkar";
+                        e.age = 21;
+                        e.specialite = "GINF";
+                        e.moyenne = 1000;
+                        e.Save();
+                        e.nom = "A";
+                        e.prenom = "B";
+                        e.age = 21;
+                        e.specialite = "GINF";
+                        e.moyenne = 1000;
+                        e.Save();
+                        e.nom = "C";
+                        e.prenom = "D";
+                        e.age = 21;
+                        e.specialite = "GINF";
+                        e.moyenne = 1000;
+                        e.Save();
+                        e.nom = "E";
+                        e.prenom = "F";
+                        e.age = 21;
+                        e.specialite = "GINF";
+                        e.moyenne = 1000;
+                        e.Save();
+
+                        foreach (var etd in e.All())
+                        {
+                            Console.WriteLine(etd);
+                        }*/
+
+            /*Filiere.all<Filiere>();*/
+            //Eleve etd = new Eleve();
+            //Dictionary<string, object> dico = new Dictionary<string, object>();
+            //dico.Add("code_fil", "fdsfsdf");
+            //List<dynamic> codeExist = Eleve.select<Eleve>(dico);
+            Note not = new Note("maj", "maj", 20); not.id  = 6;
+            not.Save();
+>>>>>>> f9339b6bb3740f5ecc1c223d567f312ac9f106bd
         }
     }
 }

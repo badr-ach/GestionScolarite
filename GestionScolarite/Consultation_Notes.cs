@@ -73,6 +73,10 @@ namespace GestionScolarite
             {
                 LoadMatiere();
             }
+            else
+            {
+                MatiereCb.Items.Clear();
+            }
         }
 
         private void NiveauCb_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,19 +131,22 @@ namespace GestionScolarite
                 dico.Clear();
                 dico.Add("code_eleve", elv.code);
                 dico.Add("code_mat", MatiereCb.Text);
-                List<dynamic> note = Note.select<Note>(dico);
-                if(note.Count != 0)
+                List<dynamic> note = Note.select<Note>(dico);           
+                List<string> etud = new List<string>();
+                etud.Add(elv.code);
+                etud.Add(elv.nom);
+                etud.Add(elv.prenom);
+                if(note.Count == 0)
                 {
-                    List<string> etud = new List<string>();
-                    etud.Add(elv.code);
-                    etud.Add(elv.nom);
-                    etud.Add(elv.prenom);
-                    etud.Add(note[0].note.ToString());
-                    l.Add(etud);
+                    etud.Add("-");
                 }
-                
+                else
+                {
+                    etud.Add(note[0].note.ToString());
+                }
+                l.Add(etud);
             }
-            NoteGrid.Rows.Clear();
+            bool MoyenneCalculable = true;
             for(int i = 0; i < l.Count; i++) 
             {
                 NoteGrid.Rows.Add();
@@ -147,9 +154,12 @@ namespace GestionScolarite
                 NoteGrid.Rows[i].Cells[1].Value = l[i][1];
                 NoteGrid.Rows[i].Cells[2].Value = l[i][2];
                 NoteGrid.Rows[i].Cells[3].Value = l[i][3];
-                moyenne += double.Parse(l[i][3], CultureInfo.InvariantCulture.NumberFormat); ;
+                if (l[i][3] != "-")
+                    moyenne += double.Parse(l[i][3], CultureInfo.InvariantCulture.NumberFormat);
+                else
+                    MoyenneCalculable = false;
             }
-            if (l.Count != 0)
+            if (l.Count != 0 && MoyenneCalculable)
             {
                 moyenne /= l.Count;
                 moyenneTxt.Text = moyenne.ToString();
