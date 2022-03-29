@@ -156,7 +156,7 @@ delimiter ;
 
 delimiter //
 DELIMITER |
-CREATE PROCEDURE Insert_
+CREATE PROCEDURE InsertNote
 (
     IN code_eleve varchar(100),
     IN code_mat varchar(100),
@@ -170,7 +170,7 @@ DELIMITER ;
 
 
 DELIMITER |
-CREATE PROCEDURE Update_
+CREATE PROCEDURE UpdateNote
 (
 	IN id int,
     IN code_eleve varchar(100),
@@ -185,7 +185,7 @@ DELIMITER ;
 
 
 DELIMITER |
-CREATE PROCEDURE Delete_
+CREATE PROCEDURE DeleteNote
 (
 	IN id int
 )

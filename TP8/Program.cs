@@ -10,7 +10,6 @@ namespace Models
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
             Eleve etd = new Eleve();
             etd.code = "P1101";
             etd.nom = "nom e1";
@@ -36,7 +35,6 @@ namespace Models
             etd.Delete();
 
 
-=======
             /*            Etudiant e = new Etudiant();
 
                         e.id = 1;
@@ -78,7 +76,6 @@ namespace Models
             //List<dynamic> codeExist = Eleve.select<Eleve>(dico);
             Note not = new Note("maj", "maj", 20); not.id  = 6;
             not.Save();
->>>>>>> f9339b6bb3740f5ecc1c223d567f312ac9f106bd
         }
     }
 }

@@ -128,7 +128,7 @@ namespace GestionScolarite
             {
                 Note note;
                 List<dynamic> ln = getNote();
-                DialogResult dialogResult = MessageBox.Show("confirmer la suppresion de la note", "Suppression", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Confirmer la suppresion de la note", "Suppression", MessageBoxButtons.YesNo);
                 if(dialogResult == DialogResult.Yes)
                 {
                     if (ln.Count != 0)

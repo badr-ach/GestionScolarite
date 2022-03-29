@@ -1,4 +1,4 @@
-﻿giusing System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
@@ -28,7 +28,7 @@ namespace DB
             }
         }
 
-        public int Save()
+        public int Save(string procedureName = "")
         {
             if (id == 0)
             {
@@ -42,7 +42,7 @@ namespace DB
                         parameters.Add(fields[i].Name,fields[i].GetValue(this));
                     }
 
-                    return Connection.IUD("Insert_", parameters);
+                    return Connection.IUD(procedureName, parameters);
 
                 }
                 catch (Exception ex)
@@ -78,7 +78,7 @@ namespace DB
                         parameters.Add(fields[i].Name, fields[i].GetValue(this));
                     }
 
-                    return Connection.IUD("Update_" , parameters);
+                    return Connection.IUD(procedureName, parameters);
 
                 }
                 catch(Exception ex)

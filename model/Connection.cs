@@ -33,8 +33,8 @@ namespace DB
                         cmd = new MySqlCommand();
                         break;
                     case "sqlserver":
-                        con = new SqlConnection("server=" + dbConfig["server"] + ";user id=" + dbConfig["username"]
-                            + ";password=" + dbConfig["password"] + ";database=" + dbConfig["dbname"]);
+                        con = new SqlConnection("Server=" + dbConfig["server"] + ";Database=" + dbConfig["dbname"] + ";User id=" + dbConfig["username"]
+                            + ";Password=" + dbConfig["password"]);
                         cmd = new SqlCommand();
                         break;
                 }
