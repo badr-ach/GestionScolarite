@@ -28,13 +28,12 @@ namespace DB
             }
         }
 
-        public int Save()
+        public int Save(string procedureName = "")
         {
             if (id == 0)
             {
                 try
                 {
-                    /*string type = this.GetType().Name;*/
                     Dictionary<string, object> parameters = new Dictionary<string, object>();
                     FieldInfo[] fields = this.GetType().GetFields();
                     for (int i = 0; i < fields.Length; i++)
@@ -43,7 +42,7 @@ namespace DB
                         parameters.Add(fields[i].Name,fields[i].GetValue(this));
                     }
 
-                    return Connection.IUD("Insert_", parameters);
+                    return Connection.IUD(procedureName, parameters);
 
                 }
                 catch (Exception ex)
@@ -72,7 +71,6 @@ namespace DB
             {
                 try
                 {
-                    /*string type = this.GetType().Name;*/
                     Dictionary<string, object> parameters = new Dictionary<string, object>();
                     FieldInfo[] fields = this.GetType().GetFields();
                     for (int i = 0; i < fields.Length; i++)
@@ -80,7 +78,7 @@ namespace DB
                         parameters.Add(fields[i].Name, fields[i].GetValue(this));
                     }
 
-                    return Connection.IUD("Update_" , parameters);
+                    return Connection.IUD(procedureName, parameters);
 
                 }
                 catch(Exception ex)

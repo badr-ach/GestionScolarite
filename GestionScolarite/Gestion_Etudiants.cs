@@ -83,11 +83,14 @@ namespace GestionScolarite
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Code.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            Nom.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            Prenom.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            Code_fil.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            Niveau.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            if (e.RowIndex != -1)
+            {
+                Code.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Nom.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Prenom.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Code_fil.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                Niveau.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
         }
 
         private void NouveauBtn_Click(object sender, EventArgs e)
@@ -216,18 +219,24 @@ namespace GestionScolarite
             {
                 if (!String.IsNullOrWhiteSpace(Code.Text))
                 {
+                    DialogResult dialogResult = MessageBox.Show("Confirmer la suppresion de l'étudiant", "Suppression", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
 
-                    Dictionary<string, object> dico = new Dictionary<string, object>();
-                    dico.Add("code", Code.Text);
-                    List<dynamic> etudiant = etd.Select(dico);
-                    if (etudiant.Count != 0)
-                    {
-                        etd = etudiant[0];
-                        etd.Delete();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Etudiant supprimé avec succès");
+                        Dictionary<string, object> dico = new Dictionary<string, object>();
+                        dico.Add("code", Code.Text);
+                        List<dynamic> etudiant = etd.Select(dico);
+                        if (etudiant.Count != 0)
+                        {
+                            etd = etudiant[0];
+                            etd.Delete();
+                            MessageBox.Show("Etudiant supprimé avec succès");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Etudiant n'existe pas");
+                        }
                     }
                 }
                 else
