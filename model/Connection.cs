@@ -33,8 +33,9 @@ namespace DB
                         cmd = new MySqlCommand();
                         break;
                     case "sqlserver":
-                        con = new SqlConnection("server=" + dbConfig["server"] + ";user id=" + dbConfig["username"]
-                            + ";password=" + dbConfig["password"] + ";database=" + dbConfig["dbname"]);
+                        // con = new SqlConnection("server=" + dbConfig["server"] + ";user id=" + dbConfig["username"]
+                        //    + ";password=" + dbConfig["password"] + ";database=" + dbConfig["dbname"]);
+                        con = new SqlConnection("Data Source=DESKTOP-5P88HRI;Initial Catalog=framework;Integrated Security=True");
                         cmd = new SqlCommand();
                         break;
                 }

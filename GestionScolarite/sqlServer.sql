@@ -111,7 +111,6 @@ codeFiliere varchar(10);
 moy int;
 niv varchar(10);
 begin
-
 select niveau, code_fil into niv, codeFiliere from eleves where code = :new.code_eleve;
 select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere AND niveau = niv);
 select count(*) into numNote from notes where code_eleve = :new.code_eleve;

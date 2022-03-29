@@ -39,6 +39,7 @@ namespace GestionScolarite
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ExcelBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BilanGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,11 +154,21 @@ namespace GestionScolarite
             this.label1.TabIndex = 20;
             this.label1.Text = "Filière";
             // 
+            // ExcelBtn
+            // 
+            this.ExcelBtn.Location = new System.Drawing.Point(749, 551);
+            this.ExcelBtn.Name = "ExcelBtn";
+            this.ExcelBtn.Size = new System.Drawing.Size(112, 34);
+            this.ExcelBtn.TabIndex = 30;
+            this.ExcelBtn.Text = "Generer Excel ";
+            this.ExcelBtn.UseVisualStyleBackColor = true;
+            // 
             // Bilan_Annuel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 660);
+            this.Controls.Add(this.ExcelBtn);
             this.Controls.Add(this.BilanGrid);
             this.Controls.Add(this.MoyenneAnuelleTxt);
             this.Controls.Add(this.label4);
@@ -190,5 +201,6 @@ namespace GestionScolarite
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button ExcelBtn;
     }
 }
