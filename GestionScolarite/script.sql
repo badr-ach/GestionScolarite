@@ -42,7 +42,8 @@ create table notes(
     note decimal(9,4),
     PRIMARY KEY(id),
     FOREIGN KEY (code_eleve) REFERENCES eleves(code),
-    FOREIGN KEY (code_mat) REFERENCES matieres(code)
+    FOREIGN KEY (code_mat) REFERENCES matieres(code),
+    unique(code_eleve, code_mat)
 );
 create table moyennes(
     id int AUTO_INCREMENT,
@@ -106,8 +107,15 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ("E13", "NOM13",
 
 
 
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat21', 12.4);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat22', 15.76);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat31', 10);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat32', 3.4);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat61', 19.5);
 
-delimiter //
+
+
+delimiter //            
 create trigger moyenneInsert
 after insert on notes
 for each row
@@ -116,7 +124,7 @@ begin
 declare numMatiere int;
 declare numNote int;
 declare codeFiliere varchar(10);
-declare moy int;
+declare moy decimal(9,2);
 declare niv varchar(10);
 
 select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
@@ -135,9 +143,12 @@ create trigger moyenneUpdate
 after update on notes
 for each row
 begin
-declare moy int;
+declare codeFiliere varchar(10);    
+declare moy decimal(9,2);
+declare niv varchar(10);
+select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
 select AVG(note) into moy from notes where code_eleve = new.code_eleve;
-update moyennes set moyenne = moy where code_eleve = new.code_eleve;
+update moyennes set moyenne = moy where code_eleve = new.code_eleve and niveau = niv and code_fil = codeFiliere;
 end //
 
 delimiter ;
@@ -148,7 +159,10 @@ create trigger moyenneDelete
 after delete on notes
 for each row
 begin
-delete from moyennes where code_eleve = old.code_eleve;
+declare codeFiliere varchar(10);
+declare niv varchar(10);
+select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
+delete from moyennes where code_eleve = old.code_eleve and niveau = niv and code_fil = codeFiliere;
 end //
 
 delimiter ;
@@ -195,5 +209,3 @@ END|
 
 DELIMITER ;
 
-
-create or replace procedure insert()

@@ -79,7 +79,10 @@ namespace GestionScolarite
                 }
                 else if (ln.Count == 0)
                 {
-                    Note note = new Note(CodeEleveTxt.Text, MatiereCb.Text, convertedNote);
+                    Note note = new Note();
+                    note.code_eleve = CodeEleveTxt.Text;
+                    note.code_mat = MatiereCb.Text;
+                    note.note = convertedNote;
                     note.Save();
                     MessageBox.Show("Note Ajoutee");                  
                 }
@@ -96,15 +99,18 @@ namespace GestionScolarite
             {
                 Note note;
                 List<dynamic> ln = getNote();
-                decimal convertedNote =     decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
+                decimal convertedNote = decimal.Parse(NoteTxt.Text, CultureInfo.InvariantCulture.NumberFormat);
                 if (convertedNote < 0 || convertedNote > 20)
                 {
                     MessageBox.Show("veuillez saisir une note entre 0 et 20");
                 }
                 else if (ln.Count == 0)
-                {                 
-                     note = new Note(CodeEleveTxt.Text, MatiereCb.Text, convertedNote);
-                     note.Save(); 
+                {
+                    note = new Note();
+                    note.code_eleve = CodeEleveTxt.Text;
+                    note.code_mat = MatiereCb.Text;
+                    note.note = convertedNote;
+                    note.Save(); 
                     MessageBox.Show("Note Modifiee");
                 }
                 else 
@@ -136,6 +142,7 @@ namespace GestionScolarite
                         note = ln[0];
                         note.Delete();
                     }
+                    NoteTxt.Text = "";
                     MessageBox.Show("Note supprimee");
                 }
             }
@@ -152,6 +159,7 @@ namespace GestionScolarite
                 List<dynamic> ln = getNote();
                 if(ln.Count == 0)
                 {
+                    NoteTxt.Text = "";
                     MessageBox.Show("cette matiere n'a pas une note");
                 }
                 else

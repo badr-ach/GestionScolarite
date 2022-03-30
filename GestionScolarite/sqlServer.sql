@@ -25,22 +25,22 @@ create table eleves (
     prenom varchar(50),
     niveau varchar(10),
     code_fil varchar(10) FOREIGN KEY REFERENCES filieres(code),
-
-    
-
 );
 create table notes(
     id int PRIMARY KEY IDENTITY(1,1),
     code_eleve varchar(10) FOREIGN KEY REFERENCES eleves(code),
     code_mat varchar(10) FOREIGN KEY REFERENCES matieres(code),
-    note decimal(9,2)
+    note decimal(9,2),
+    CONSTRAINT uceleve UNIQUE NONCLUSTERED ( code_eleve, code_mat )
+
 );
 create table moyennes(
     id int PRIMARY KEY IDENTITY(1,1),
     code_eleve varchar(10) FOREIGN KEY REFERENCES eleves(code),
     code_fil varchar(10) FOREIGN KEY REFERENCES filieres(code) ,
     niveau varchar(10),
-    moyenne decimal(9,2)
+    moyenne decimal(9,2),
+    CONSTRAINT uceleve UNIQUE NONCLUSTERED ( code_eleve, code_fil, niveau )
 );
 
 insert into filieres (code,designation) values ('AP','Année préparatoire');
@@ -93,30 +93,95 @@ insert into eleves (code, nom, prenom, niveau, code_fil) values ('E12', 'NOM12',
 insert into eleves (code, nom, prenom, niveau, code_fil) values ('E13', 'NOM13', 'PRENOM13', '3', 'GIND');
 
 
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat21', 12.4);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat22', 15.76);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat31', 10);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat32', 3.4);
+insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat61', 19.5);
 
-create trigger moyenne
-on dbo.notes 
-after insert, update, delete 
-for each row
 
 create trigger moyenneInsert
 on notes
 after insert
-for each row
-
-declare 
-numMatiere int;
-numNote int;
-codeFiliere varchar(10);
-moy int;
-niv varchar(10);
+As
 begin
+declare @moy decimal(9,2),
+        @niv varchar(10),
+        @codeFiliere varchar(10),
+        @codeEleve varchar(10),
+        @numMatiere int,
+        @numNote int;
 
-select niveau, code_fil into niv, codeFiliere from eleves where code = :new.code_eleve;
-select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere AND niveau = niv);
-select count(*) into numNote from notes where code_eleve = :new.code_eleve;
+SELECT @codeELeve = INSERTED.code_eleve FROM INSERTED;
+select @niv = niveau from Eleves where code = @codeELeve;
+select @codeFiliere = code_fil from eleves where code = @codeEleve;
+select @numMatiere = count(*) from matieres where code_module in (select code from modules where code_fil = @codeFiliere and niveau = @niv);
+select @numNote = count(*) from notes where code_eleve = @codeEleve;
+select @moy = AVG(note) from notes where code_eleve = @codeEleve;
+if (@numNote = @numMatiere)
+   begin
+   insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(@codeEleve, @codeFiliere, @niv, @moy);
+   end
 
-if ( numMatiere = numNote ) then
-    select AVG(note) into moy from noteS where code_eleve = new.code_eleve;
-    insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(:new.code_eleve, codeFiliere, niv, moy);
-end if; 
+end
+
+
+
+
+
+create trigger moyenneUpdate
+on notes
+after update
+As
+begin
+declare @moy decimal(9,2),
+        @niv varchar(10),
+        @codeFiliere varchar(10),
+        @codeEleve varchar(10);
+SELECT @codeELeve = INSERTED.code_eleve FROM INSERTED;
+select @moy = AVG(note) from notes where code_eleve = @codeEleve;
+select @niv = niveau from Eleves where code = @codeELeve;
+select @codeFiliere = code_fil from eleves where code = @codeEleve;
+update moyennes set moyenne = @moy where code_eleve = @codeEleve and code_fil = @codeFiliere and niveau = @niv;
+end
+
+
+
+create trigger moyennedelete
+on notes
+after delete
+As
+begin
+declare @niv varchar(10),
+        @codeFiliere varchar(10),
+        @codeEleve varchar(10);
+SELECT @codeELeve = DELETED.code_eleve FROM DELETED;
+select @niv = niveau from Eleves where code = @codeELeve;
+select @codeFiliere = code_fil from eleves where code = @codeEleve;
+delete from moyennes where code_eleve = @codeEleve and code_fil = @codeFiliere and niveau = @niv;
+
+end
+
+
+create procedure InsertNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
+as 
+begin 
+insert into notes(code_eleve, code_mat, note) values(@code_eleve, @code_mat, @note)
+end
+
+
+
+create procedure UpdateNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
+as 
+begin 
+update notes set note = @note where code_eleve = @code_eleve and code_mat = @code_mat
+end
+
+
+
+
+create procedure DeleteNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
+as 
+begin 
+delete from notes where code_eleve = @code_eleve and code_mat = @code_mat
+end
