@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Models;
+
 namespace GestionScolarite
 {
     public partial class Bilan_Annuel : Form
