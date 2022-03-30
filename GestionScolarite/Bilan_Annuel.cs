@@ -152,7 +152,7 @@ namespace GestionScolarite
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "CSV (*.csv)|*.csv";
-                sfd.FileName = "Output.csv";
+                sfd.FileName = FiliereCb.Text+"_"+NiveauCb.Text+".csv";
                 bool fileError = false;
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
