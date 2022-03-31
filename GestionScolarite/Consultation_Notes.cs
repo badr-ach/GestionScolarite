@@ -23,6 +23,7 @@ namespace GestionScolarite
         {
             if(!string.IsNullOrWhiteSpace(filiereCb.Text) && !string.IsNullOrWhiteSpace(NiveauCb.Text) && !string.IsNullOrWhiteSpace(MatiereCb.Text))
             {
+                moyenneTxt.Text = "";
                 LoadData();
 
             }
@@ -162,6 +163,7 @@ namespace GestionScolarite
             if (l.Count != 0 && MoyenneCalculable)
             {
                 moyenne /= l.Count;
+                moyenne = Math.Round(moyenne, 2);
                 moyenneTxt.Text = moyenne.ToString();
             }
         }
