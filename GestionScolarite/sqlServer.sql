@@ -171,17 +171,17 @@ end
 
 
 
-create procedure UpdateNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
+create procedure UpdateNote ( @id as int, @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
 as 
 begin 
-update notes set note = @note where code_eleve = @code_eleve and code_mat = @code_mat
+update notes set note = @note where id = @id
 end
 
 
 
 
-create procedure DeleteNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
+create procedure DeleteNote ( @id as int)
 as 
 begin 
-delete from notes where code_eleve = @code_eleve and code_mat = @code_mat
+delete from notes where id = @id
 end
