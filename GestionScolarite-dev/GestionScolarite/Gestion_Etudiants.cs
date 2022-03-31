@@ -12,11 +12,15 @@ using Models;
 
 namespace GestionScolarite
 {
+   
     public partial class Gestion_Etudiants : Form
     {
+        public static string CodeEleve = "";
         public Gestion_Etudiants()
         {
             InitializeComponent();
+            Niveau.DropDownStyle = ComboBoxStyle.DropDownList;
+            Code_fil.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -55,7 +59,19 @@ namespace GestionScolarite
             {
                 if (!String.IsNullOrWhiteSpace(Code.Text))
                 {
-
+                    Dictionary<string, object> dico = new Dictionary<string, Object>();
+                    dico.Add("code", Code.Text);
+                    List<dynamic> le = Eleve.select<Eleve>(dico);
+                    if(le.Count == 0)
+                    {
+                        MessageBox.Show("code eleve invalide");
+                    }
+                    else
+                    {
+                        CodeEleve = Code.Text;
+                        new Gestion_Notes().ShowDialog();
+                    }
+                    
                 }
                 else
                 {
@@ -69,11 +85,14 @@ namespace GestionScolarite
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Code.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            Nom.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            Prenom.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            Code_fil.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            Niveau.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            if (e.RowIndex != -1)
+            {
+                Code.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Nom.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Prenom.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Code_fil.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                Niveau.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
         }
 
         private void NouveauBtn_Click(object sender, EventArgs e)
@@ -109,7 +128,7 @@ namespace GestionScolarite
                 if ( isChampsNotNull() )
                 {
                     Dictionary<string, object> dico = new Dictionary<string, object>();
-                    dico.Add("code_fil", Code.Text);
+                    dico.Add("code", Code.Text);
                     List<dynamic> codeExist = etd.Select(dico);
                     if (codeExist.Count == 0)
                     {
@@ -202,18 +221,24 @@ namespace GestionScolarite
             {
                 if (!String.IsNullOrWhiteSpace(Code.Text))
                 {
+                    DialogResult dialogResult = MessageBox.Show("Confirmer la suppresion de l'étudiant", "Suppression", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
 
-                    Dictionary<string, object> dico = new Dictionary<string, object>();
-                    dico.Add("code", Code.Text);
-                    List<dynamic> etudiant = etd.Select(dico);
-                    if (etudiant.Count != 0)
-                    {
-                        etd = etudiant[0];
-                        etd.Delete();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Etudiant supprimé avec succès");
+                        Dictionary<string, object> dico = new Dictionary<string, object>();
+                        dico.Add("code", Code.Text);
+                        List<dynamic> etudiant = etd.Select(dico);
+                        if (etudiant.Count != 0)
+                        {
+                            etd = etudiant[0];
+                            etd.Delete();
+                            MessageBox.Show("Etudiant supprimé avec succès");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Etudiant n'existe pas");
+                        }
                     }
                 }
                 else
@@ -275,8 +300,11 @@ namespace GestionScolarite
         private Dictionary<string,Control> GetChecked()
         {
             Dictionary<string,Control> checkedBoxes = new Dictionary<string,Control>();
-            if (CodeCB.Checked == true) checkedBoxes.Add(CodeCB.Name,Code);
-            return checkedBoxes;
+            if (CodeCB.Checked == true)
+            {
+                checkedBoxes.Add(CodeCB.Name, Code);
+                return checkedBoxes;
+            }
 
             if (NomCB.Checked == true) checkedBoxes.Add(NomCB.Name,Nom);
             if (PrenomCB.Checked == true) checkedBoxes.Add(PrenomCB.Name,Prenom);

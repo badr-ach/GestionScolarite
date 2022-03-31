@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
@@ -13,49 +13,89 @@ namespace DB
             Connection.Connect();
         }
 
-        public int Delete() {
-            string sql = "Delete from " + this.GetType().Name + "s where id = " + id;
-            Console.WriteLine(sql);
-            return Connection.IUD(sql);
-        }
-
-        public int Save()
-        {
-            if (id == 0)
+        public int Delete(string procedureName = "") {
+            try
             {
-                string sql = "insert into " + this.GetType().Name + "s (";
-                FieldInfo[] fields = this.GetType().GetFields();
-                for (int i = 0; i < fields.Length; i++)
-                {
-                    if (fields[i].Name == "id") continue;
-                    sql += fields[i].Name + ",";
-                }
-                sql = sql.Remove(sql.Length - 1);
-                sql += ") values (";
-                for (int i = 0; i < fields.Length; i++)
-                {
-                    if (fields[i].Name == "id") continue;
-                    sql += "'" + fields[i].GetValue(this) + "',";
-                }
-                sql = sql.Remove(sql.Length - 1);
-                sql += ")";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("id", id);
+                return Connection.IUD(procedureName, parameters);
+            }
+            catch (Exception ex)
+            {
+                string sql = "Delete from " + this.GetType().Name + "s where id = " + id;
                 Console.WriteLine(sql);
                 return Connection.IUD(sql);
             }
-            else
+        }
+
+        public int Save(string procedureName = "")
+        {
+            if (id == 0)
             {
-                string sql = "Update " + this.GetType().Name + "s set ";
-                FieldInfo[] fields = this.GetType().GetFields();
-                for (int i = 0; i < fields.Length; i++)
+                try
                 {
-                    if (fields[i].Name == "id") continue;
-                    sql += fields[i].Name + "='" + fields[i].GetValue(this) + "',";
+                    Dictionary<string, object> parameters = new Dictionary<string, object>();
+                    FieldInfo[] fields = this.GetType().GetFields();
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        if (fields[i].Name == "id") continue;
+                        parameters.Add(fields[i].Name,fields[i].GetValue(this));
+                    }
+
+                    return Connection.IUD(procedureName, parameters);
 
                 }
-                sql = sql.Remove(sql.Length - 1);
-                sql += " where id = " + this.id;
-                Console.WriteLine(sql);
-                return Connection.IUD(sql);
+                catch (Exception ex)
+                {
+                    string sql = "insert into " + this.GetType().Name + "s (";
+                    FieldInfo[] fields = this.GetType().GetFields();
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        if (fields[i].Name == "id") continue;
+                        sql += fields[i].Name + ",";
+                    }
+                    sql = sql.Remove(sql.Length - 1);
+                    sql += ") values (";
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        if (fields[i].Name == "id") continue;
+                        sql += "'" + fields[i].GetValue(this) + "',";
+                    }
+                    sql = sql.Remove(sql.Length - 1);
+                    sql += ")";
+                    Console.WriteLine(sql);
+                    return Connection.IUD(sql);
+                }
+            }
+            else
+            {
+                try
+                {
+                    Dictionary<string, object> parameters = new Dictionary<string, object>();
+                    FieldInfo[] fields = this.GetType().GetFields();
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        parameters.Add(fields[i].Name, fields[i].GetValue(this));
+                    }
+
+                    return Connection.IUD(procedureName, parameters);
+
+                }
+                catch(Exception ex)
+                {
+                    string sql = "Update " + this.GetType().Name + "s set ";
+                    FieldInfo[] fields = this.GetType().GetFields();
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        if (fields[i].Name == "id") continue;
+                        sql += fields[i].Name + "='" + fields[i].GetValue(this) + "',";
+
+                    }
+                    sql = sql.Remove(sql.Length - 1);
+                    sql += " where id = " + this.id;
+                    Console.WriteLine(sql);
+                    return Connection.IUD(sql);
+                }
             }
         }
 
@@ -162,7 +202,7 @@ namespace DB
             string sql = "Select * from " +typeof(T).Name + "s where ";
             foreach (KeyValuePair<string, object> kp in dico)
             {
-                sql += kp.Key + "=" + kp.Value.ToString() + " and ";
+                sql += kp.Key + "='" + kp.Value.ToString() + "' and ";
             }
             sql = sql.Remove(sql.Length - 4);
             Console.WriteLine(sql);

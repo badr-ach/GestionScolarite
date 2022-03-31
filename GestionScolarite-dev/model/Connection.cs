@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.Common;
 
 namespace DB
 {
@@ -13,12 +14,11 @@ namespace DB
     {
         private static IDbConnection con;
         private static IDbCommand cmd;
-
+        private static Dictionary<string, string> dbConfig = new Dictionary<string, string>();
         public static void Connect()
         {
             if (con == null)
             {
-                Dictionary<string, string> dbConfig = new Dictionary<string, string>();
                 foreach (string line in System.IO.File.ReadLines(@"../../../.env"))
                 {
                     string[] tokens = line.Split('=');
@@ -33,8 +33,8 @@ namespace DB
                         cmd = new MySqlCommand();
                         break;
                     case "sqlserver":
-                        con = new SqlConnection("server=" + dbConfig["server"] + ";user id=" + dbConfig["username"]
-                            + ";password=" + dbConfig["password"] + ";database=" + dbConfig["dbname"]);
+                        con = new SqlConnection("Server=" + dbConfig["server"] + ";Database=" + dbConfig["dbname"] + ";User id=" + dbConfig["username"]
+                            + ";Password=" + dbConfig["password"]);
                         cmd = new SqlCommand();
                         break;
                 }
@@ -48,15 +48,46 @@ namespace DB
 
         public static int IUD(string req)
         {
+            cmd.Parameters.Clear();
+            cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = req;
             return cmd.ExecuteNonQuery();
         }
 
         public static IDataReader Select(string req)
         {
+            cmd.Parameters.Clear();
+            cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = req;
             return cmd.ExecuteReader();
         }
 
+        public static int IUD(string procedurename, Dictionary<string, object> args)
+        {
+            cmd.Parameters.Clear();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            foreach (KeyValuePair<string, object> kp in args)
+            {
+                cmd.Parameters.Add(CreateParameter(kp.Key,kp.Value));
+            }
+            cmd.CommandText = procedurename;
+            return cmd.ExecuteNonQuery();
+        }
+
+
+        private static IDataParameter CreateParameter(string parameterName, object value)
+        {
+            IDataParameter parameter = null;
+            switch (dbConfig["dialect"].ToLower())
+            {
+                case "mysql":
+                    parameter = new MySqlParameter() { ParameterName = parameterName, Value = value };
+                    break;
+                case "sqlserver":
+                    parameter = new SqlParameter() { ParameterName = parameterName, Value = value };
+                    break;
+            }
+            return parameter;
+        }
     }
 }
