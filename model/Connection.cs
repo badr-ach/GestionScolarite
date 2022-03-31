@@ -48,6 +48,7 @@ namespace DB
 
         public static int IUD(string req)
         {
+            cmd.Parameters.Clear();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = req;
             return cmd.ExecuteNonQuery();
@@ -55,6 +56,7 @@ namespace DB
 
         public static IDataReader Select(string req)
         {
+            cmd.Parameters.Clear();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = req;
             return cmd.ExecuteReader();
@@ -62,6 +64,7 @@ namespace DB
 
         public static int IUD(string procedurename, Dictionary<string, object> args)
         {
+            cmd.Parameters.Clear();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             foreach (KeyValuePair<string, object> kp in args)
             {

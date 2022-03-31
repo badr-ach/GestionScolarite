@@ -206,6 +206,11 @@ namespace GestionScolarite
             }
         }
 
+        private void MoyenneAnuelleTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         /*private void ExcelBtn_Click(object sender, EventArgs e)

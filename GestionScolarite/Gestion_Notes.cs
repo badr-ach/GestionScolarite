@@ -83,7 +83,7 @@ namespace GestionScolarite
                     note.code_eleve = CodeEleveTxt.Text;
                     note.code_mat = MatiereCb.Text;
                     note.note = convertedNote;
-                    note.Save();
+                    note.Save("InsertNote");
                     MessageBox.Show("Note Ajoutee");                  
                 }
                 else
@@ -110,14 +110,14 @@ namespace GestionScolarite
                     note.code_eleve = CodeEleveTxt.Text;
                     note.code_mat = MatiereCb.Text;
                     note.note = convertedNote;
-                    note.Save(); 
+                    note.Save("InsertNote"); 
                     MessageBox.Show("Note Modifiee");
                 }
                 else 
                 {
                     note = ln[0];
                     note.note = convertedNote;
-                    note.Save();
+                    note.Save("UpdateNote");
                     MessageBox.Show("Note Modifiee");
                 }
                 

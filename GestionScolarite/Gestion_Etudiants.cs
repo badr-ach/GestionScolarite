@@ -18,7 +18,9 @@ namespace GestionScolarite
         public static string CodeEleve = "";
         public Gestion_Etudiants()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            Niveau.DropDownStyle = ComboBoxStyle.DropDownList;
+            Code_fil.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -126,7 +128,7 @@ namespace GestionScolarite
                 if ( isChampsNotNull() )
                 {
                     Dictionary<string, object> dico = new Dictionary<string, object>();
-                    dico.Add("code_fil", Code.Text);
+                    dico.Add("code", Code.Text);
                     List<dynamic> codeExist = etd.Select(dico);
                     if (codeExist.Count == 0)
                     {
@@ -298,8 +300,11 @@ namespace GestionScolarite
         private Dictionary<string,Control> GetChecked()
         {
             Dictionary<string,Control> checkedBoxes = new Dictionary<string,Control>();
-            if (CodeCB.Checked == true) checkedBoxes.Add(CodeCB.Name,Code);
-            return checkedBoxes;
+            if (CodeCB.Checked == true)
+            {
+                checkedBoxes.Add(CodeCB.Name, Code);
+                return checkedBoxes;
+            }
 
             if (NomCB.Checked == true) checkedBoxes.Add(NomCB.Name,Nom);
             if (PrenomCB.Checked == true) checkedBoxes.Add(PrenomCB.Name,Prenom);

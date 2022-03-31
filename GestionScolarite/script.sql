@@ -115,39 +115,100 @@ insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat61', 19.5)
 
 
 
+
 delimiter //            
 create trigger moyenneInsert
 after insert on notes
 for each row
 begin
-
+declare x varchar(10);
+declare y decimal(9,2);
+declare counter int;
 declare numMatiere int;
 declare numNote int;
 declare codeFiliere varchar(10);
 declare moy decimal(9,2);
 declare niv varchar(10);
+DECLARE done INT DEFAULT FALSE;
 
+declare cur cursor for select  ml.code,  avg(n.note) moyenne_module
+                from matieres m, modules ml, notes n
+                where m.code_module = ml.code and n.code_eleve = new.code_eleve and n.code_mat = m.code
+                group by ml.code;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+open cur;
 select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
 select count(*)  into numMatiere from matieres where code_module in (select code from modules where code_fil = codeFiliere AND niveau = niv);
 select count(*) into numNote from notes where code_eleve = new.code_eleve;
 
 if ( numMatiere = numNote ) then
-    select AVG(note) into moy from noteS where code_eleve = new.code_eleve;
+    
+    set moy = 0;
+    set counter = 0;
+    read_loop : LOOP 
+        Fetch cur into x, y;
+        if done then 
+            leave read_loop;
+		end if;
+        set moy = moy + y;
+        set counter = counter +1;
+    end loop;
+    set moy = moy / counter;
     insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(new.code_eleve, codeFiliere, niv, moy);
 end if; 
+close cur;
 end //
 delimiter ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 delimiter //
 create trigger moyenneUpdate
 after update on notes
 for each row
 begin
+declare x varchar(10);
+declare y decimal(9,2);
+declare counter int;
 declare codeFiliere varchar(10);    
 declare moy decimal(9,2);
 declare niv varchar(10);
+DECLARE done INT DEFAULT FALSE;
+declare cur cursor for select  ml.code,  avg(n.note) moyenne_module
+                from matieres m, modules ml, notes n
+                where m.code_module = ml.code and n.code_eleve = new.code_eleve and n.code_mat = m.code
+                group by ml.code;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+open cur;
+
 select niveau, code_fil into niv, codeFiliere from eleves where code = new.code_eleve;
-select AVG(note) into moy from notes where code_eleve = new.code_eleve;
+
+set moy = 0;
+set counter = 0;
+read_loop : LOOP 
+    Fetch cur into x, y;
+    if done then 
+        leave read_loop;
+	end if;
+    set moy = moy + y;
+    set counter = counter +1;
+end loop;
+set moy = moy / counter;
+
 update moyennes set moyenne = moy where code_eleve = new.code_eleve and niveau = niv and code_fil = codeFiliere;
 end //
 
@@ -208,4 +269,6 @@ BEGIN
 END|
 
 DELIMITER ;
+
+
 

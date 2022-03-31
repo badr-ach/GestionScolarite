@@ -17,6 +17,7 @@ namespace GestionScolarite
         public Consultation_Notes()
         {
             InitializeComponent();
+            moyenneTxt.Enabled = false;
         }
 
         private void RechercherBtn_Click(object sender, EventArgs e)

@@ -13,12 +13,12 @@ namespace DB
             Connection.Connect();
         }
 
-        public int Delete() {
+        public int Delete(string procedureName = "") {
             try
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
                 parameters.Add("id", id);
-                return Connection.IUD("Delete_", parameters);
+                return Connection.IUD(procedureName, parameters);
             }
             catch (Exception ex)
             {
