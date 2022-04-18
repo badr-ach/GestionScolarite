@@ -167,15 +167,6 @@ delimiter ;
 
 
 
-
-
-
-
-
-
-
-
-
 delimiter //
 create trigger moyenneUpdate
 after update on notes
@@ -228,8 +219,8 @@ end //
 
 delimiter ;
 
-
 delimiter //
+
 DELIMITER |
 CREATE PROCEDURE InsertNote
 (

@@ -182,7 +182,7 @@ namespace GestionScolarite
                             }
                             outputCsv[0] += columnNames;
 
-                            for (int i = 1; i < BilanGrid.Rows.Count - 1; i++)
+                            for (int i = 1; i < BilanGrid.Rows.Count; i++)
                             {
                                 for (int j = 0; j < columnCount; j++)
                                 {
@@ -210,39 +210,5 @@ namespace GestionScolarite
         {
 
         }
-
-
-
-        /*private void ExcelBtn_Click(object sender, EventArgs e)
-        {
-            DataLoaded = LoadData();
-            if (DataLoaded)
-            {
-                Excel.Application myexcelApplication = new Excel.Application();
-                if (myexcelApplication != null)
-                {
-                    Excel.Workbook myexcelWorkbook = myexcelApplication.Workbooks.Add();
-                    Excel.Worksheet myexcelWorksheet = (Excel.Worksheet)myexcelWorkbook.Sheets.Add();
-                    myexcelWorksheet.Cells[1, 1] = "Code Matiere";
-                    myexcelWorksheet.Cells[1, 2] = "Designation";
-                    myexcelWorksheet.Cells[1, 3] = "Semestre";
-                    myexcelWorksheet.Cells[1, 4] = "Note";
-                    for (int i = 0; i < BilanGrid.RowCount; i++)
-                    {
-                        myexcelWorksheet.Cells[i + 2, 1] = BilanGrid.Rows[i].Cells[0].Value;
-                        myexcelWorksheet.Cells[i + 2, 2] = BilanGrid.Rows[i].Cells[1].Value;
-                        myexcelWorksheet.Cells[i + 2, 3] = BilanGrid.Rows[i].Cells[2].Value;
-                        myexcelWorksheet.Cells[i + 2, 4] = BilanGrid.Rows[i].Cells[3].Value;
-                    }
-
-
-                    string path = "C:\\Computer Science\\GINF2\\" + FiliereCb.Text + "_" + NiveauCb.Text+".xls";
-                    myexcelApplication.ActiveWorkbook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal);
-
-                    myexcelWorkbook.Close();
-                    myexcelApplication.Quit();
-                }
-            }
-        }*/
     }
 }

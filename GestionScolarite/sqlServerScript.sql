@@ -100,32 +100,46 @@ insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat32', 3.4);
 insert into notes (code_eleve, code_mat, note) values ('E7', 'GINF2mat61', 19.5);
 
 
+
 create trigger moyenneInsert
 on notes
 after insert
 As
 begin
-declare @moy decimal(9,2),
+declare @moy decimal(9,2) = 0,
+        @x varchar(10),
+        @y decimal(9,2),
+        @numModule int, 
         @niv varchar(10),
         @codeFiliere varchar(10),
         @codeEleve varchar(10),
         @numMatiere int,
         @numNote int;
-
 SELECT @codeELeve = INSERTED.code_eleve FROM INSERTED;
 select @niv = niveau from Eleves where code = @codeELeve;
 select @codeFiliere = code_fil from eleves where code = @codeEleve;
+select @numModule = count(*) from modules where niveau = @niv and code_fil = @codeFiliere;
 select @numMatiere = count(*) from matieres where code_module in (select code from modules where code_fil = @codeFiliere and niveau = @niv);
 select @numNote = count(*) from notes where code_eleve = @codeEleve;
-select @moy = AVG(note) from notes where code_eleve = @codeEleve;
+declare cur cursor local for select  ml.code,  avg(n.note) moyenne_module
+                from matieres m, modules ml, notes n
+                where m.code_module = ml.code and n.code_eleve = @codeEleve and n.code_mat = m.code
+                group by ml.code;
+open cur
 if (@numNote = @numMatiere)
    begin
+   Fetch next from cur into @x, @y
+   WHILE @@FETCH_STATUS = 0
+    BEGIN
+        set @moy = @moy + @y 
+        FETCH NEXT FROM cur INTO @x, @y
+    END
+    CLOSE cur;
+    DEALLOCATE cur;
+    set @moy = @moy / @numModule
    insert into moyennes(code_eleve, code_fil, niveau, moyenne) values(@codeEleve, @codeFiliere, @niv, @moy);
    end
 end
-
-
-
 
 
 create trigger moyenneUpdate
@@ -133,17 +147,33 @@ on notes
 after update
 As
 begin
-declare @moy decimal(9,2),
+declare @moy decimal(9,2) = 0,
+        @x varchar(10),
+        @y decimal(9,2),
+        @numModule int, 
         @niv varchar(10),
         @codeFiliere varchar(10),
         @codeEleve varchar(10);
 SELECT @codeELeve = INSERTED.code_eleve FROM INSERTED;
-select @moy = AVG(note) from notes where code_eleve = @codeEleve;
 select @niv = niveau from Eleves where code = @codeELeve;
 select @codeFiliere = code_fil from eleves where code = @codeEleve;
+select @numModule = count(*) from modules where niveau = @niv and code_fil = @codeFiliere
+declare updateCur cursor local for select  ml.code,  avg(n.note) moyenne_module
+                from matieres m, modules ml, notes n
+                where m.code_module = ml.code and n.code_eleve = @codeEleve and n.code_mat = m.code
+                group by ml.code;
+open updateCur
+Fetch next from updateCur into @x, @y
+WHILE @@FETCH_STATUS = 0
+    BEGIN
+        set @moy = @moy + @y 
+        FETCH NEXT FROM updateCur INTO @x, @y
+    END
+    CLOSE updateCur;
+    DEALLOCATE updateCur;
+    set @moy = @moy / @numModule
 update moyennes set moyenne = @moy where code_eleve = @codeEleve and code_fil = @codeFiliere and niveau = @niv;
-end
-
+end 
 
 
 create trigger moyennedelete
@@ -158,8 +188,8 @@ SELECT @codeELeve = DELETED.code_eleve FROM DELETED;
 select @niv = niveau from Eleves where code = @codeELeve;
 select @codeFiliere = code_fil from eleves where code = @codeEleve;
 delete from moyennes where code_eleve = @codeEleve and code_fil = @codeFiliere and niveau = @niv;
-
 end
+
 
 
 create procedure InsertNote ( @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
@@ -169,14 +199,11 @@ insert into notes(code_eleve, code_mat, note) values(@code_eleve, @code_mat, @no
 end
 
 
-
 create procedure UpdateNote ( @id as int, @code_eleve as varchar(10), @code_mat as varchar(10), @note as decimal(9,2))
 as 
 begin 
 update notes set note = @note where id = @id
 end
-
-
 
 
 create procedure DeleteNote ( @id as int)
