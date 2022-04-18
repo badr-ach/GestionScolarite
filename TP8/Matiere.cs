@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DB;
-
 namespace Models
 {
-    class Etudiant : Model
+    public class Matiere : Model
     {
-        public string nom, prenom, specialite;
-        public float moyenne;
-        public int age;
-
-       
+        public string code, designation, code_module;
+        public int vh;
     }
 }

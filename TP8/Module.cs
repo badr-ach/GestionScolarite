@@ -7,12 +7,9 @@ using DB;
 
 namespace Models
 {
-    class Etudiant : Model
+    public class Module : Model
     {
-        public string nom, prenom, specialite;
-        public float moyenne;
-        public int age;
+        public string code, designation, niveau, semestre, code_fil;
 
-       
     }
 }
