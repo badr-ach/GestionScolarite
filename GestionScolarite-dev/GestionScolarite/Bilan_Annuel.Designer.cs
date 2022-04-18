@@ -49,7 +49,7 @@ namespace GestionScolarite
             this.BilanGrid.BackgroundColor = System.Drawing.SystemColors.Info;
             this.BilanGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BilanGrid.Location = new System.Drawing.Point(76, 158);
-            this.BilanGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BilanGrid.Margin = new System.Windows.Forms.Padding(2);
             this.BilanGrid.Name = "BilanGrid";
             this.BilanGrid.RowHeadersWidth = 62;
             this.BilanGrid.RowTemplate.Height = 28;
@@ -61,7 +61,7 @@ namespace GestionScolarite
             // 
             this.MoyenneAnuelleTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MoyenneAnuelleTxt.Location = new System.Drawing.Point(234, 332);
-            this.MoyenneAnuelleTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MoyenneAnuelleTxt.Margin = new System.Windows.Forms.Padding(2);
             this.MoyenneAnuelleTxt.Name = "MoyenneAnuelleTxt";
             this.MoyenneAnuelleTxt.Size = new System.Drawing.Size(207, 23);
             this.MoyenneAnuelleTxt.TabIndex = 28;
@@ -80,10 +80,10 @@ namespace GestionScolarite
             // 
             // RechercherBtn
             // 
-            this.RechercherBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.RechercherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.RechercherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RechercherBtn.Location = new System.Drawing.Point(489, 106);
-            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(2);
             this.RechercherBtn.Name = "RechercherBtn";
             this.RechercherBtn.Size = new System.Drawing.Size(142, 32);
             this.RechercherBtn.TabIndex = 26;
@@ -97,7 +97,7 @@ namespace GestionScolarite
             this.NiveauCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NiveauCb.FormattingEnabled = true;
             this.NiveauCb.Location = new System.Drawing.Point(489, 43);
-            this.NiveauCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NiveauCb.Margin = new System.Windows.Forms.Padding(2);
             this.NiveauCb.Name = "NiveauCb";
             this.NiveauCb.Size = new System.Drawing.Size(143, 24);
             this.NiveauCb.TabIndex = 25;
@@ -109,7 +109,7 @@ namespace GestionScolarite
             this.EtudiantCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EtudiantCb.FormattingEnabled = true;
             this.EtudiantCb.Location = new System.Drawing.Point(176, 106);
-            this.EtudiantCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EtudiantCb.Margin = new System.Windows.Forms.Padding(2);
             this.EtudiantCb.Name = "EtudiantCb";
             this.EtudiantCb.Size = new System.Drawing.Size(171, 24);
             this.EtudiantCb.TabIndex = 24;
@@ -120,7 +120,7 @@ namespace GestionScolarite
             this.FiliereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FiliereCb.FormattingEnabled = true;
             this.FiliereCb.Location = new System.Drawing.Point(176, 43);
-            this.FiliereCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FiliereCb.Margin = new System.Windows.Forms.Padding(2);
             this.FiliereCb.Name = "FiliereCb";
             this.FiliereCb.Size = new System.Drawing.Size(171, 24);
             this.FiliereCb.TabIndex = 23;
@@ -161,18 +161,20 @@ namespace GestionScolarite
             // 
             // ExcelBtn
             // 
+            this.ExcelBtn.BackColor = System.Drawing.Color.Khaki;
             this.ExcelBtn.Location = new System.Drawing.Point(489, 332);
             this.ExcelBtn.Name = "ExcelBtn";
-            this.ExcelBtn.Size = new System.Drawing.Size(143, 23);
+            this.ExcelBtn.Size = new System.Drawing.Size(142, 23);
             this.ExcelBtn.TabIndex = 30;
             this.ExcelBtn.Text = "Générer l\'Excel";
-            this.ExcelBtn.UseVisualStyleBackColor = true;
+            this.ExcelBtn.UseVisualStyleBackColor = false;
             this.ExcelBtn.Click += new System.EventHandler(this.ExcelBtn_Click);
             // 
             // Bilan_Annuel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(738, 396);
             this.Controls.Add(this.ExcelBtn);
             this.Controls.Add(this.BilanGrid);
@@ -185,7 +187,7 @@ namespace GestionScolarite
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Bilan_Annuel";
             this.Text = "Bilan_Annuel";
             this.Load += new System.EventHandler(this.Bilan_Annuel_Load);

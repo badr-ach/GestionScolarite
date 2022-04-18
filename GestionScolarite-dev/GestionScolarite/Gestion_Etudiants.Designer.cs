@@ -58,30 +58,27 @@ namespace GestionScolarite
             // 
             // Code
             // 
-            this.Code.Location = new System.Drawing.Point(164, 52);
-            this.Code.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Code.Location = new System.Drawing.Point(115, 31);
             this.Code.Name = "Code";
-            this.Code.Size = new System.Drawing.Size(224, 31);
+            this.Code.Size = new System.Drawing.Size(158, 23);
             this.Code.TabIndex = 1;
             // 
             // CodeCB
             // 
             this.CodeCB.AutoSize = true;
-            this.CodeCB.Location = new System.Drawing.Point(411, 58);
-            this.CodeCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CodeCB.Location = new System.Drawing.Point(288, 35);
             this.CodeCB.Name = "CodeCB";
-            this.CodeCB.Size = new System.Drawing.Size(22, 21);
+            this.CodeCB.Size = new System.Drawing.Size(15, 14);
             this.CodeCB.TabIndex = 2;
             this.CodeCB.UseVisualStyleBackColor = true;
             this.CodeCB.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // NouveauBtn
             // 
-            this.NouveauBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.NouveauBtn.Location = new System.Drawing.Point(567, 52);
-            this.NouveauBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NouveauBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.NouveauBtn.Location = new System.Drawing.Point(397, 31);
             this.NouveauBtn.Name = "NouveauBtn";
-            this.NouveauBtn.Size = new System.Drawing.Size(187, 38);
+            this.NouveauBtn.Size = new System.Drawing.Size(131, 23);
             this.NouveauBtn.TabIndex = 3;
             this.NouveauBtn.Text = "Nouveau";
             this.NouveauBtn.UseVisualStyleBackColor = false;
@@ -94,11 +91,10 @@ namespace GestionScolarite
             // 
             // AjouterBtn
             // 
-            this.AjouterBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.AjouterBtn.Location = new System.Drawing.Point(567, 115);
-            this.AjouterBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AjouterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.AjouterBtn.Location = new System.Drawing.Point(397, 69);
             this.AjouterBtn.Name = "AjouterBtn";
-            this.AjouterBtn.Size = new System.Drawing.Size(187, 38);
+            this.AjouterBtn.Size = new System.Drawing.Size(131, 23);
             this.AjouterBtn.TabIndex = 7;
             this.AjouterBtn.Text = "Ajouter";
             this.AjouterBtn.UseVisualStyleBackColor = false;
@@ -107,28 +103,25 @@ namespace GestionScolarite
             // NomCB
             // 
             this.NomCB.AutoSize = true;
-            this.NomCB.Location = new System.Drawing.Point(411, 122);
-            this.NomCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NomCB.Location = new System.Drawing.Point(288, 73);
             this.NomCB.Name = "NomCB";
-            this.NomCB.Size = new System.Drawing.Size(22, 21);
+            this.NomCB.Size = new System.Drawing.Size(15, 14);
             this.NomCB.TabIndex = 6;
             this.NomCB.UseVisualStyleBackColor = true;
             // 
             // Nom
             // 
-            this.Nom.Location = new System.Drawing.Point(164, 115);
-            this.Nom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Nom.Location = new System.Drawing.Point(115, 69);
             this.Nom.Name = "Nom";
-            this.Nom.Size = new System.Drawing.Size(224, 31);
+            this.Nom.Size = new System.Drawing.Size(158, 23);
             this.Nom.TabIndex = 5;
             // 
             // SupprimerBtn
             // 
-            this.SupprimerBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.SupprimerBtn.Location = new System.Drawing.Point(567, 242);
-            this.SupprimerBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SupprimerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.SupprimerBtn.Location = new System.Drawing.Point(397, 145);
             this.SupprimerBtn.Name = "SupprimerBtn";
-            this.SupprimerBtn.Size = new System.Drawing.Size(187, 38);
+            this.SupprimerBtn.Size = new System.Drawing.Size(131, 23);
             this.SupprimerBtn.TabIndex = 15;
             this.SupprimerBtn.Text = "Supprimer";
             this.SupprimerBtn.UseVisualStyleBackColor = false;
@@ -137,10 +130,9 @@ namespace GestionScolarite
             // FiliereCB
             // 
             this.FiliereCB.AutoSize = true;
-            this.FiliereCB.Location = new System.Drawing.Point(411, 248);
-            this.FiliereCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FiliereCB.Location = new System.Drawing.Point(288, 149);
             this.FiliereCB.Name = "FiliereCB";
-            this.FiliereCB.Size = new System.Drawing.Size(22, 21);
+            this.FiliereCB.Size = new System.Drawing.Size(15, 14);
             this.FiliereCB.TabIndex = 14;
             this.FiliereCB.UseVisualStyleBackColor = true;
             // 
@@ -148,20 +140,18 @@ namespace GestionScolarite
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(64, 243);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(45, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 28);
+            this.label3.Size = new System.Drawing.Size(50, 19);
             this.label3.TabIndex = 12;
             this.label3.Text = "Filière";
             // 
             // ModifierBtn
             // 
-            this.ModifierBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.ModifierBtn.Location = new System.Drawing.Point(567, 178);
-            this.ModifierBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ModifierBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ModifierBtn.Location = new System.Drawing.Point(397, 107);
             this.ModifierBtn.Name = "ModifierBtn";
-            this.ModifierBtn.Size = new System.Drawing.Size(187, 38);
+            this.ModifierBtn.Size = new System.Drawing.Size(131, 23);
             this.ModifierBtn.TabIndex = 11;
             this.ModifierBtn.Text = "Modifier";
             this.ModifierBtn.UseVisualStyleBackColor = false;
@@ -170,29 +160,26 @@ namespace GestionScolarite
             // PrenomCB
             // 
             this.PrenomCB.AutoSize = true;
-            this.PrenomCB.Location = new System.Drawing.Point(411, 185);
-            this.PrenomCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PrenomCB.Location = new System.Drawing.Point(288, 111);
             this.PrenomCB.Name = "PrenomCB";
-            this.PrenomCB.Size = new System.Drawing.Size(22, 21);
+            this.PrenomCB.Size = new System.Drawing.Size(15, 14);
             this.PrenomCB.TabIndex = 10;
             this.PrenomCB.UseVisualStyleBackColor = true;
             this.PrenomCB.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Prenom
             // 
-            this.Prenom.Location = new System.Drawing.Point(164, 178);
-            this.Prenom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Prenom.Location = new System.Drawing.Point(115, 107);
             this.Prenom.Name = "Prenom";
-            this.Prenom.Size = new System.Drawing.Size(224, 31);
+            this.Prenom.Size = new System.Drawing.Size(158, 23);
             this.Prenom.TabIndex = 9;
             // 
             // RechercherBtn
             // 
-            this.RechercherBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.RechercherBtn.Location = new System.Drawing.Point(567, 310);
-            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RechercherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.RechercherBtn.Location = new System.Drawing.Point(397, 186);
             this.RechercherBtn.Name = "RechercherBtn";
-            this.RechercherBtn.Size = new System.Drawing.Size(187, 38);
+            this.RechercherBtn.Size = new System.Drawing.Size(131, 23);
             this.RechercherBtn.TabIndex = 19;
             this.RechercherBtn.Text = "Rechercher";
             this.RechercherBtn.UseVisualStyleBackColor = false;
@@ -201,10 +188,9 @@ namespace GestionScolarite
             // NiveauCB
             // 
             this.NiveauCB.AutoSize = true;
-            this.NiveauCB.Location = new System.Drawing.Point(411, 317);
-            this.NiveauCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NiveauCB.Location = new System.Drawing.Point(288, 190);
             this.NiveauCB.Name = "NiveauCB";
-            this.NiveauCB.Size = new System.Drawing.Size(22, 21);
+            this.NiveauCB.Size = new System.Drawing.Size(15, 14);
             this.NiveauCB.TabIndex = 18;
             this.NiveauCB.UseVisualStyleBackColor = true;
             this.NiveauCB.CheckedChanged += new System.EventHandler(this.RechercherCB_CheckedChanged);
@@ -213,10 +199,9 @@ namespace GestionScolarite
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(64, 312);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(45, 187);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 28);
+            this.label5.Size = new System.Drawing.Size(56, 19);
             this.label5.TabIndex = 16;
             this.label5.Text = "Niveau";
             // 
@@ -224,10 +209,9 @@ namespace GestionScolarite
             // 
             this.Code_fil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Code_fil.FormattingEnabled = true;
-            this.Code_fil.Location = new System.Drawing.Point(164, 242);
-            this.Code_fil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Code_fil.Location = new System.Drawing.Point(115, 145);
             this.Code_fil.Name = "Code_fil";
-            this.Code_fil.Size = new System.Drawing.Size(224, 33);
+            this.Code_fil.Size = new System.Drawing.Size(158, 23);
             this.Code_fil.TabIndex = 20;
             this.Code_fil.SelectedIndexChanged += new System.EventHandler(this.FiliereCBB_SelectedIndexChanged);
             // 
@@ -235,19 +219,17 @@ namespace GestionScolarite
             // 
             this.Niveau.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Niveau.FormattingEnabled = true;
-            this.Niveau.Location = new System.Drawing.Point(164, 312);
-            this.Niveau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Niveau.Location = new System.Drawing.Point(115, 187);
             this.Niveau.Name = "Niveau";
-            this.Niveau.Size = new System.Drawing.Size(224, 33);
+            this.Niveau.Size = new System.Drawing.Size(158, 23);
             this.Niveau.TabIndex = 21;
             // 
             // GestionDesNotesBtn
             // 
-            this.GestionDesNotesBtn.BackColor = System.Drawing.SystemColors.Info;
-            this.GestionDesNotesBtn.Location = new System.Drawing.Point(567, 385);
-            this.GestionDesNotesBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GestionDesNotesBtn.BackColor = System.Drawing.Color.Khaki;
+            this.GestionDesNotesBtn.Location = new System.Drawing.Point(397, 231);
             this.GestionDesNotesBtn.Name = "GestionDesNotesBtn";
-            this.GestionDesNotesBtn.Size = new System.Drawing.Size(187, 38);
+            this.GestionDesNotesBtn.Size = new System.Drawing.Size(131, 23);
             this.GestionDesNotesBtn.TabIndex = 22;
             this.GestionDesNotesBtn.Text = "Gestion des notes";
             this.GestionDesNotesBtn.UseVisualStyleBackColor = false;
@@ -255,13 +237,13 @@ namespace GestionScolarite
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 460);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 276);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 150);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -269,10 +251,9 @@ namespace GestionScolarite
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(64, 55);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(45, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 28);
+            this.label1.Size = new System.Drawing.Size(44, 19);
             this.label1.TabIndex = 24;
             this.label1.Text = "Code";
             // 
@@ -280,10 +261,9 @@ namespace GestionScolarite
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(66, 122);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(46, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 28);
+            this.label2.Size = new System.Drawing.Size(42, 19);
             this.label2.TabIndex = 25;
             this.label2.Text = "Nom";
             // 
@@ -291,18 +271,18 @@ namespace GestionScolarite
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(63, 185);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(44, 111);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 28);
+            this.label4.Size = new System.Drawing.Size(62, 19);
             this.label4.TabIndex = 26;
             this.label4.Text = "Prénom";
             // 
             // Gestion_Etudiants
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 750);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(595, 449);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -325,7 +305,6 @@ namespace GestionScolarite
             this.Controls.Add(this.NouveauBtn);
             this.Controls.Add(this.CodeCB);
             this.Controls.Add(this.Code);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Gestion_Etudiants";
             this.Text = "Gestion_Etudiants";
             this.Load += new System.EventHandler(this.Gestion_Etudiants_Load);

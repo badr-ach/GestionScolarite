@@ -46,9 +46,10 @@ namespace GestionScolarite
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(93, 66);
+            this.label1.Location = new System.Drawing.Point(65, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 25);
+            this.label1.Size = new System.Drawing.Size(89, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Code élève";
             // 
@@ -56,9 +57,10 @@ namespace GestionScolarite
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(93, 141);
+            this.label2.Location = new System.Drawing.Point(65, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 25);
+            this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Matière";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -67,29 +69,30 @@ namespace GestionScolarite
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(93, 224);
+            this.label3.Location = new System.Drawing.Point(65, 134);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 25);
+            this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Note";
             // 
             // CodeEleveTxt
             // 
             this.CodeEleveTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CodeEleveTxt.Location = new System.Drawing.Point(252, 62);
-            this.CodeEleveTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CodeEleveTxt.Location = new System.Drawing.Point(176, 37);
+            this.CodeEleveTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CodeEleveTxt.Name = "CodeEleveTxt";
             this.CodeEleveTxt.ReadOnly = true;
-            this.CodeEleveTxt.Size = new System.Drawing.Size(228, 28);
+            this.CodeEleveTxt.Size = new System.Drawing.Size(161, 21);
             this.CodeEleveTxt.TabIndex = 3;
             // 
             // NoteTxt
             // 
             this.NoteTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NoteTxt.Location = new System.Drawing.Point(252, 224);
-            this.NoteTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NoteTxt.Location = new System.Drawing.Point(176, 134);
+            this.NoteTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NoteTxt.Name = "NoteTxt";
-            this.NoteTxt.Size = new System.Drawing.Size(228, 30);
+            this.NoteTxt.Size = new System.Drawing.Size(161, 23);
             this.NoteTxt.TabIndex = 4;
             this.NoteTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoteTxt_KeyPress);
             // 
@@ -98,20 +101,20 @@ namespace GestionScolarite
             this.MatiereCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MatiereCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MatiereCb.FormattingEnabled = true;
-            this.MatiereCb.Location = new System.Drawing.Point(252, 138);
-            this.MatiereCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MatiereCb.Location = new System.Drawing.Point(176, 83);
+            this.MatiereCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MatiereCb.Name = "MatiereCb";
-            this.MatiereCb.Size = new System.Drawing.Size(228, 33);
+            this.MatiereCb.Size = new System.Drawing.Size(161, 24);
             this.MatiereCb.TabIndex = 5;
             // 
             // NouveauBtn
             // 
-            this.NouveauBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.NouveauBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.NouveauBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NouveauBtn.Location = new System.Drawing.Point(538, 58);
-            this.NouveauBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NouveauBtn.Location = new System.Drawing.Point(377, 35);
+            this.NouveauBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NouveauBtn.Name = "NouveauBtn";
-            this.NouveauBtn.Size = new System.Drawing.Size(178, 48);
+            this.NouveauBtn.Size = new System.Drawing.Size(125, 29);
             this.NouveauBtn.TabIndex = 6;
             this.NouveauBtn.Text = "Nouveau";
             this.NouveauBtn.UseVisualStyleBackColor = false;
@@ -119,12 +122,12 @@ namespace GestionScolarite
             // 
             // AjouterBtn
             // 
-            this.AjouterBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.AjouterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.AjouterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AjouterBtn.Location = new System.Drawing.Point(538, 141);
-            this.AjouterBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AjouterBtn.Location = new System.Drawing.Point(377, 85);
+            this.AjouterBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AjouterBtn.Name = "AjouterBtn";
-            this.AjouterBtn.Size = new System.Drawing.Size(178, 48);
+            this.AjouterBtn.Size = new System.Drawing.Size(125, 29);
             this.AjouterBtn.TabIndex = 7;
             this.AjouterBtn.Text = "Ajouter";
             this.AjouterBtn.UseVisualStyleBackColor = false;
@@ -132,12 +135,12 @@ namespace GestionScolarite
             // 
             // ModifierBtn
             // 
-            this.ModifierBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.ModifierBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ModifierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ModifierBtn.Location = new System.Drawing.Point(538, 224);
-            this.ModifierBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ModifierBtn.Location = new System.Drawing.Point(377, 134);
+            this.ModifierBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ModifierBtn.Name = "ModifierBtn";
-            this.ModifierBtn.Size = new System.Drawing.Size(178, 48);
+            this.ModifierBtn.Size = new System.Drawing.Size(125, 29);
             this.ModifierBtn.TabIndex = 8;
             this.ModifierBtn.Text = "Modifier";
             this.ModifierBtn.UseVisualStyleBackColor = false;
@@ -145,12 +148,12 @@ namespace GestionScolarite
             // 
             // SupprimerBtn
             // 
-            this.SupprimerBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.SupprimerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.SupprimerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.SupprimerBtn.Location = new System.Drawing.Point(816, 58);
-            this.SupprimerBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SupprimerBtn.Location = new System.Drawing.Point(571, 35);
+            this.SupprimerBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SupprimerBtn.Name = "SupprimerBtn";
-            this.SupprimerBtn.Size = new System.Drawing.Size(178, 48);
+            this.SupprimerBtn.Size = new System.Drawing.Size(125, 29);
             this.SupprimerBtn.TabIndex = 9;
             this.SupprimerBtn.Text = "Supprimer";
             this.SupprimerBtn.UseVisualStyleBackColor = false;
@@ -158,12 +161,12 @@ namespace GestionScolarite
             // 
             // RechercherBtn
             // 
-            this.RechercherBtn.BackColor = System.Drawing.SystemColors.Info;
+            this.RechercherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.RechercherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.RechercherBtn.Location = new System.Drawing.Point(816, 141);
-            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RechercherBtn.Location = new System.Drawing.Point(571, 85);
+            this.RechercherBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RechercherBtn.Name = "RechercherBtn";
-            this.RechercherBtn.Size = new System.Drawing.Size(178, 48);
+            this.RechercherBtn.Size = new System.Drawing.Size(125, 29);
             this.RechercherBtn.TabIndex = 10;
             this.RechercherBtn.Text = "Rechercher";
             this.RechercherBtn.UseVisualStyleBackColor = false;
@@ -171,9 +174,10 @@ namespace GestionScolarite
             // 
             // Gestion_Notes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 322);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(777, 193);
             this.Controls.Add(this.RechercherBtn);
             this.Controls.Add(this.SupprimerBtn);
             this.Controls.Add(this.ModifierBtn);
@@ -185,7 +189,7 @@ namespace GestionScolarite
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Gestion_Notes";
             this.Text = "Gestion des notes";
             this.Load += new System.EventHandler(this.Gestion_Notes_Load);
